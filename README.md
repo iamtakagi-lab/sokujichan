@@ -1,5 +1,5 @@
-# sokujichan
-即時ちゃん 6v6即時集計Bot
+# 即時ちゃん
+6v6即時集計Bot
 
 ## Commands
 ![](https://i.imgur.com/wb0qlxO.png)
