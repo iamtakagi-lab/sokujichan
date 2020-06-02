@@ -1,4 +1,6 @@
 # 即時ちゃん
+Donate: https://riptakagi.fanbox.cc
+
 MK8DX 6v6即時集計Bot
 
 ## Commands
