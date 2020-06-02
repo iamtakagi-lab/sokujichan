@@ -17,7 +17,7 @@ class PenaltyCommand(val sokujiService: SokujiService)  : Command() {
     override fun execute(event: CommandEvent?) {
         event?.apply {
             val args = StringUtils.split(args)
-            val sokuji = sokujiService.getSokuji(guild.idLong, channel.idLong) ?: return reply("即時集計は開始されてません")
+            val sokuji = sokujiService.getSokuji(guild.idLong, channel.idLong) ?: return reply("即時集計は開始されていません")
 
             if(args.size >= 2) {
 

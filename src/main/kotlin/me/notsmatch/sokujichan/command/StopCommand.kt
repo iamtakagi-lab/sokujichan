@@ -16,7 +16,7 @@ class StopCommand(val sokujiService: SokujiService) : Command() {
             if(sokujiService.removeSokuji(guild.idLong, channel.idLong)){
                 reply("即時集計を終了しました")
             }else{
-                reply("即時集計は開始されてません")
+                reply("即時集計は開始されていません")
             }
         }
     }
