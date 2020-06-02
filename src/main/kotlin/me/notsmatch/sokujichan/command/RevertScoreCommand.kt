@@ -36,8 +36,9 @@ class RevertScoreCommand (val sokujiService: SokujiService): Command() {
                 }
 
                 sokuji.races.removeAt(i)
+                sokuji.save()
 
-                reply("レース: ${args[0]}　の得点を取り消しました")
+                reply("レース: ${args[0]}の得点を取り消しました")
             }else{
                 reply("``_revertscore <race>``")
             }

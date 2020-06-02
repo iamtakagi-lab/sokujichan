@@ -28,10 +28,13 @@ class RaceCommand(val sokujiService: SokujiService) : Command() {
 
                 args.forEach {
                     if(!NumberUtils.isInteger(it)){
-                        return@forEach reply("整数を入力してください")
+                        return@apply reply("整数を入力してください")
                     }
                     if(it.toInt() > 12 || it.toInt() < 1){
-                        return@forEach reply("順位は 1 ~ 12　で入力してください")
+                        return@apply reply("順位は1 ~ 12で入力してください")
+                    }
+                    if(dataA.contains(it.toInt())){
+                        return@apply reply("順位が重複しています")
                     }
                     dataA.add(it.toInt())
                 }
