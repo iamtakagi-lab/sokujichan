@@ -58,7 +58,7 @@ class Sokuji(val guildId: Long,
                 .append("レース順位: " + spotsA.format())
                 .append("\n\n")
                 .append("$teamA $a - $b $teamB\n")
-                .append("点差: $a-$b\n")
+                .append("点差: ${a.minus(b)}\n")
                 .append("```").toString()
         }
     }
@@ -76,7 +76,7 @@ class Sokuji(val guildId: Long,
              .append("${if(afterRace == 0) races.size else afterRace}レース終了: 得点\n")
              .append("$teamA: ${a}\n")
              .append("$teamB: ${b}\n")
-             .append("点差: ${a-b}\n")
+             .append("点差: ${a.minus(b)}\n")
              .append("```").toString()
     }
 
