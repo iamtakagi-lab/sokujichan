@@ -1,5 +1,7 @@
-# 即時ちゃん
+# 即時ちゃん 
 MK8DX 6v6即時集計Bot
+
+https://discord.com/api/oauth2/authorize?client_id=716931790865956904&permissions=3136&scope=bot
 
 ## Commands
 ![](https://i.imgur.com/wb0qlxO.png)
