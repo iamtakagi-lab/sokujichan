@@ -19,7 +19,7 @@ class MongoService {
 
 
     init {
-        
+
         this.client = MongoClient(MongoClientURI(System.getenv("MONGO_URI")))
         this.database = this.client.getDatabase("sokujichan")
 

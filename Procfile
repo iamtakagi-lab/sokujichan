@@ -1,0 +1,1 @@
+worker: java -jar build/libs/sokujichan-1.0-SNAPSHOT.jar
