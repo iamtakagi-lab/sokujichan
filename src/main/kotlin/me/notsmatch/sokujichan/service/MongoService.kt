@@ -1,9 +1,6 @@
 package me.notsmatch.sokujichan.service
 
-import com.mongodb.MongoClient
-import com.mongodb.MongoClientURI
-import com.mongodb.MongoCredential
-import com.mongodb.ServerAddress
+import com.mongodb.*
 import com.mongodb.client.FindIterable
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.MongoDatabase
@@ -22,8 +19,8 @@ class MongoService {
 
 
     init {
-
-        this.client = MongoClient(ServerAddress("localhost", 27017))
+        
+        this.client = MongoClient(MongoClientURI(System.getenv("MONGO_URI")))
         this.database = this.client.getDatabase("sokujichan")
 
 
