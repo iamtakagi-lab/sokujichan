@@ -30,6 +30,7 @@ class Bot (private val token: String) {
     val sokujiService = SokujiService()
     val settingsService = GuildSettingsService(mongoService)
     val eventWaiter = EventWaiter()
+    val WEBSITE = System.getenv("WEBSITE")
 
     fun start() {
         instance = this
@@ -47,7 +48,7 @@ class Bot (private val token: String) {
             RevertScoreCommand(sokujiService),
             SetScoreCommand(sokujiService),
             PenaltyCommand(sokujiService),
-            AboutCommand(Color.GREEN, "https://github.com/notsmatch/sokujichan", Permission.MESSAGE_READ, Permission.MESSAGE_WRITE, Permission.MESSAGE_ADD_REACTION, Permission.VIEW_CHANNEL),
+            AboutCommand(Color.GREEN, "https://github.com/riptakagi/sokujichan", Permission.MESSAGE_READ, Permission.MESSAGE_WRITE, Permission.MESSAGE_ADD_REACTION, Permission.VIEW_CHANNEL),
             GuildlistCommand(eventWaiter)
         )
 
@@ -66,7 +67,7 @@ class Listener : ListenerAdapter() {
         timer.schedule(object : TimerTask() {
             override fun run() {
                 event.jda.apply {
-                    presence.setPresence(OnlineStatus.ONLINE, Activity.watching("_scabout | ${guilds.size} servers"))
+                    presence.setPresence(OnlineStatus.ONLINE, Activity.watching("${Bot.instance.WEBSITE} | ${guilds.size} servers"))
                 }
             }
         }, 0, 1000*300)
