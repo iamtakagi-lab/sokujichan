@@ -34,24 +34,23 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
     get("{id}") {
         val id = call.parameters["id"]!!.toString().split("-")
 
-        if(!NumberUtils.isNumber(id[0]) || !NumberUtils.isNumber(id[1])){
+        if(!NumberUtils.isNumber(id[0]) || !NumberUtils.isNumber(id[1])) {
             return@get call.respondHtml(HttpStatusCode.InternalServerError) {
                 head {
                     title { +"正しいIDを入力してください / 即時ちゃん(6vs6)" }
-                    link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
-                    link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                    link(rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                    link(rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     styleLink("/static/css/main.css")
+
                     meta {
-                        httpEquiv = "refresh"
-                        content = "1"
+                        name = "viewport"
+                        content = "width=device-width, initial-scale=1"
                     }
                 }
                 body {
-                    div {
-                        section {
-                            p {
-                                +"[Error] 500 Internal Server Error: 正しいIDを入力してください"
-                            }
+                    div("container") {
+                        p {
+                            +"[Error] 500 Internal Server Error: 正しいIDを入力してください"
                         }
                     }
                 }
@@ -67,17 +66,16 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
                 link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                 link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                 styleLink("/static/css/main.css")
+
                 meta {
-                    httpEquiv = "refresh"
-                    content = "1"
+                    name = "viewport"
+                    content = "width=device-width, initial-scale=1"
                 }
             }
             body {
-                div {
-                    section {
-                        p {
-                            +"[Error] 404 Not Found: データが見つかりません"
-                        }
+                div("container") {
+                    p {
+                        +"[Error] 404 Not Found: データが見つかりません"
                     }
                 }
             }
@@ -90,14 +88,20 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
                     styleLink("/static/css/main.css")
                     link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+
                     meta {
                         httpEquiv = "refresh"
                         content = "1"
                     }
+
+                    meta {
+                        name = "viewport"
+                        content = "width=device-width, initial-scale=1"
+                    }
                 }
                 body {
-                    section("container") {
-                        div("header") {
+                    div("container"){
+                         div("header") {
                             p("dif " + if(getScoreA().minus(getScoreB()) < 0) "minus" else if(getScoreA().minus(getScoreB()) > 0) "plus" else "plus-minus") {
                                 +getDifSign(getScoreA().minus(getScoreB()))
                             }

@@ -1,18 +1,23 @@
-.container {
-    background: rgba(0,0,0,0.7);
-    max-width: 660px;
-    max-height: 200px;
-    border-radius: 1em;
-    
-    text-align: center;
-
-    display: table-cell;
-    vertical-align: top;
-
-    padding: .5em;
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 800px;
+    overflow: hidden;
 }
 
-.header, body {
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 1em;
+    text-align: center;
+    display: table-cell;
+    vertical-align: top;
+    width: 800px;
+    padding: 0.8em;
+}
+
+.header,
+.body {
     color: white;
     font-weight: bold;
     text-shadow: 2px 2px 5px black;
@@ -24,7 +29,7 @@
 }
 
 .plus {
-    color: rgb(245, 28, 28)
+    color: rgb(245, 28, 28);
 }
 
 .minus {
@@ -37,7 +42,7 @@
 
 .races-left {
     display: inline-flex;
-    color: coral
+    color: coral;
 }
 
 .win-determine {
@@ -62,11 +67,10 @@
 }
 
 .team-a {
-   margin-right: 40px;
+    margin-right: 40px;
 }
 
 .score-a {
-
 }
 
 .split {
@@ -75,7 +79,6 @@
 }
 
 .score-b {
-
 }
 
 .team-b {
@@ -85,4 +88,3 @@
 p {
     margin: 0 auto;
 }
-

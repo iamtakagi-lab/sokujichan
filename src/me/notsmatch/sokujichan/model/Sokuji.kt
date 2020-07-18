@@ -77,7 +77,8 @@ class Sokuji(val guildId: Long,
         race.apply {
             val a = spotsA.getScore()
             val b = spotsB.getScore()
-            return "```$a-$b (${getDifSign(a-b)}) / 合計: ${teamA} ${a}-${b} ${teamB} / 点差: ${getDifSign(getScoreA().minus(getScoreB()))} / @${getRacesLeft()}```"
+            return "```$a-$b (${getDifSign(a-b)}) / 合計: ${teamA} ${a}-${b} ${teamB} / 点差: ${getDifSign(getScoreA().minus(getScoreB()))} / @${getRacesLeft()}" +
+                    " ${if(isWinDetermine()) "勝利確定" else ""}  ${if(isLoseDetermine()) "敗北確定" else ""}```"
         }
     }
 
@@ -158,9 +159,9 @@ class Sokuji(val guildId: Long,
             append("点差: ${getDifSign(a.minus(b))}\n")
 
             if(isWinDetermine()){
-                append("勝利確定!")
+                append("勝利確定")
             } else if(isLoseDetermine()){
-                append("敗北確定!")
+                append("敗北確定")
             }
 
             append("```").toString()
