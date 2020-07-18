@@ -1,0 +1,5 @@
+{
+  "name": "sokujichan",
+  "description": "sokujichan discord bot",
+  "image": "heroku/java"
+}
