@@ -1,0 +1,18 @@
+section {
+    background: rgba(0,0,0,0.7);
+    width: 40%;
+    border-radius: 1.5em;
+    
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+
+    z-index: -1;
+}
+
+p {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px black;
+}
