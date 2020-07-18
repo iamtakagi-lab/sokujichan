@@ -1,4 +1,4 @@
-package me.notsmatch.sokujichan.controller
+package me.notsmatch.sokujichan.router
 
 import io.ktor.application.ApplicationCall
 import io.ktor.application.call
@@ -16,7 +16,7 @@ import me.notsmatch.sokujichan.model.Sokuji
 import me.notsmatch.sokujichan.service.SokujiService
 import org.apache.commons.lang3.math.NumberUtils
 
-fun Route.renderingController(sokujiService: SokujiService) {
+fun Route.renderingRouter(sokujiService: SokujiService) {
 
     static ("static") {
         static("css"){
@@ -96,13 +96,39 @@ fun Route.renderingController(sokujiService: SokujiService) {
                     }
                 }
                 body {
-                    div {
-                        section {
-                            p {
-                                +"$teamA ${getScoreA()} - ${getScoreB()} $teamB (${getDifSign(getScoreA().minus(getScoreB()))} 残レース:${getRacesLeft()})"
-                                if(isWinDetermine()) {
-                                    +" 勝利確定!"
+                    section("container") {
+                        div("header") {
+                            p("dif " + if(getScoreA().minus(getScoreB()) < 0) "minus" else if(getScoreA().minus(getScoreB()) > 0) "plus" else "plus-minus") {
+                                +getDifSign(getScoreA().minus(getScoreB()))
+                            }
+                            p("races-left") {
+                                +"残レース:${getRacesLeft()}"
+                            }
+                            if (isWinDetermine()) {
+                                p("win-determine") {
+                                    +" WIN"
                                 }
+                            } else if (isLoseDetermine()) {
+                                p("lose-determine") {
+                                    +" LOSE"
+                                }
+                            }
+                        }
+                        div("body") {
+                            p("team-a") {
+                                +teamA
+                            }
+                            p("score-a") {
+                                +"${getScoreA()}"
+                            }
+                            p("split") {
+                                +"-"
+                            }
+                            p("score-b") {
+                                +"${getScoreB()}"
+                            }
+                            p("team-b") {
+                                +teamB
                             }
                         }
                     }

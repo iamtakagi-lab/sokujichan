@@ -1,18 +1,88 @@
-section {
+.container {
     background: rgba(0,0,0,0.7);
-    width: 40%;
-    border-radius: 1.5em;
+    max-width: 660px;
+    max-height: 200px;
+    border-radius: 1em;
     
     text-align: center;
-    display: table-cell;
-    vertical-align: middle;
 
-    z-index: -1;
+    display: table-cell;
+    vertical-align: top;
+
+    padding: .5em;
 }
 
-p {
+.header, body {
     color: white;
-    font-size: 40px;
     font-weight: bold;
     text-shadow: 2px 2px 5px black;
 }
+
+.dif {
+    display: inline-flex;
+    margin-right: 30px;
+}
+
+.plus {
+    color: rgb(245, 28, 28)
+}
+
+.minus {
+    color: dodgerblue;
+}
+
+.plus-minus {
+    color: greenyellow;
+}
+
+.races-left {
+    display: inline-flex;
+    color: coral
+}
+
+.win-determine {
+    display: inline-flex;
+    margin-left: 30px;
+    color: yellow;
+}
+
+.lose-determine {
+    display: inline-flex;
+    margin-left: 30px;
+    color: cornflowerblue;
+}
+
+.header {
+    font-size: 40px;
+}
+
+.body {
+    font-size: 55px;
+    display: inline-flex;
+}
+
+.team-a {
+   margin-right: 40px;
+}
+
+.score-a {
+
+}
+
+.split {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.score-b {
+
+}
+
+.team-b {
+    margin-left: 40px;
+}
+
+p {
+    margin: 0 auto;
+}
+

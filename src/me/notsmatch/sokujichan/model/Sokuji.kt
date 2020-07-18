@@ -6,6 +6,8 @@ import me.notsmatch.sokujichan.Config
 import me.notsmatch.sokujichan.service.BotService
 import me.notsmatch.sokujichan.util.JsonUtils
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.entities.Message
+import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
 import org.bson.Document
 import java.util.*
@@ -29,8 +31,8 @@ class Sokuji(val guildId: Long,
             setColor(Config.EMBED_COLOR)
             setAuthor("即時集計を開始しました")
             setTitle("$teamA vs $teamB")
-            setDescription(
-                "配信用 Overlay (OBSでご利用可能です): ${getOverlayUrl()}\n")
+            addField("配信用 Overlay (OBSで利用可能)", getOverlayUrl(), false)
+            addField("使い方 / Guide", "[クリックして開く / Click to View](${Config.GUIDE_URL})", false)
         }.build()).queue()
     }
 
@@ -53,12 +55,30 @@ class Sokuji(val guildId: Long,
         messages.forEach { channel.sendMessage(it).queue() }
     }
 
+    fun sendMessage(vararg messages: MessageEmbed) {
+        val channel = getTextChannel() ?:return
+        messages.forEach { channel.sendMessage(it).queue() }
+    }
+
     /**
      * 集計をチャンネルに送信します
      */
     fun send() {
         val race = races.get(races.size-1)
-        sendMessage(getRaceScore(race), getTotalScore(), getRaceScores())
+        sendMessage(
+            getRaceScore(race),
+            getTotalScore(),
+            getRaceScores(),
+            getRaceInfo(race)
+        )
+    }
+
+    fun getRaceInfo(race: Race) : String {
+        race.apply {
+            val a = spotsA.getScore()
+            val b = spotsB.getScore()
+            return "```$a-$b (${getDifSign(a-b)}) / 合計: ${teamA} ${a}-${b} ${teamB} / 点差: ${getDifSign(getScoreA().minus(getScoreB()))} / @${getRacesLeft()}```"
+        }
     }
 
     fun getRacesLeft() : Int {
@@ -93,19 +113,32 @@ class Sokuji(val guildId: Long,
     }
 
     /**
+     * 敗北確定かどうか
+     */
+    fun isLoseDetermine() : Boolean {
+        val possibleMaxDif = getRacesLeft() * 40
+        val dif = getScoreB().minus(getScoreA())
+        if(dif > possibleMaxDif){
+            return true
+        }
+        return false
+    }
+
+    /**
      * @return レースのスコア
      */
     fun getRaceScore(race: Race) : String {
         race.apply {
             val a = spotsA.getScore()
             val b = spotsB.getScore()
-            return StringBuilder()
-                .append("```\n")
-                .append("レース順位: " + spotsA.format())
-                .append("\n\n")
-                .append("$teamA $a - $b $teamB\n")
-                .append("点差: ${getDifSign(a.minus(b))}\n")
-                .append("```").toString()
+            return StringBuilder().apply {
+                append("```\n")
+                append("レース順位: " + spotsA.format())
+                append("\n\n")
+                append("$teamA $a - $b $teamB\n")
+                append("点差: ${getDifSign(a.minus(b))}\n")
+                append("```").toString()
+            }.toString()
         }
     }
 
@@ -117,13 +150,21 @@ class Sokuji(val guildId: Long,
         val a = getScoreA()
         val b = getScoreB()
 
-        return StringBuilder()
-             .append("```\n")
-             .append("${if(afterRace == 0) races.size else afterRace}レース終了: 得点\n")
-             .append("$teamA: ${a}\n")
-             .append("$teamB: ${b}\n")
-             .append("点差: ${getDifSign(a.minus(b))}\n")
-             .append("```").toString()
+        return StringBuilder().apply {
+            append("```\n")
+            append("${if (afterRace == 0) races.size else afterRace} / $raceSize レース終了\n")
+            append("$teamA: ${a}\n")
+            append("$teamB: ${b}\n")
+            append("点差: ${getDifSign(a.minus(b))}\n")
+
+            if(isWinDetermine()){
+                append("勝利確定!")
+            } else if(isLoseDetermine()){
+                append("敗北確定!")
+            }
+
+            append("```").toString()
+        }.toString()
     }
 
     /**

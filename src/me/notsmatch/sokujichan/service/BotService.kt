@@ -46,7 +46,7 @@ class BotService (val token: String, val sokujiService: SokujiService, val dev: 
             SetScoreCommand(sokujiService),
             PenaltyCommand(sokujiService),
             SetRaceSizeCommand(sokujiService),
-            UrlCommand(sokujiService),
+            OverlayCommand(sokujiService),
             AboutCommand(Color.GREEN, "https://github.com/riptakagi/sokujichan", Permission.MESSAGE_READ, Permission.MESSAGE_WRITE, Permission.MESSAGE_ADD_REACTION, Permission.VIEW_CHANNEL),
             GuildlistCommand(eventWaiter)
         )

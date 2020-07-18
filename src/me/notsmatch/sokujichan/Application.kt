@@ -9,8 +9,7 @@ import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Locations
 import io.ktor.util.KtorExperimentalAPI
 import io.ktor.websocket.WebSockets
-import me.notsmatch.sokujichan.controller.renderingController
-import me.notsmatch.sokujichan.model.Sokuji
+import me.notsmatch.sokujichan.router.renderingRouter
 import me.notsmatch.sokujichan.service.BotService
 import me.notsmatch.sokujichan.service.SokujiService
 
@@ -29,7 +28,7 @@ fun Application.module() {
     val botService = BotService(System.getenv("SOKUJICHAN_TOKEN"), sokujiService,false).start()
 
     routing {
-        renderingController(sokujiService)
+        renderingRouter(sokujiService)
     }
 
     install(CORS) {

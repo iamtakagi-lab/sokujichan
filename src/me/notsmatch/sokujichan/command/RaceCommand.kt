@@ -22,6 +22,8 @@ class RaceCommand(val sokujiService: SokujiService) : Command() {
             val args = StringUtils.split(args)
             val sokuji = sokujiService.getSokuji(guild.idLong, channel.idLong) ?: return reply("即時集計は開始されていません")
 
+            if(sokuji.getRacesLeft() == 0) return reply("レースは終了しました")
+
             if(args.size >= 6) {
                 val dataA = mutableListOf<Int>()
                 val dataB = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
