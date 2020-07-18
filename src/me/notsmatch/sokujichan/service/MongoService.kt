@@ -11,7 +11,7 @@ import org.bson.conversions.Bson
 import java.util.*
 
 
-class MongoService(val dev: Boolean) {
+class MongoService(dev: Boolean) {
 
     val client: MongoClient
     val database: MongoDatabase
