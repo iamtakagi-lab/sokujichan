@@ -11,20 +11,20 @@ import io.ktor.response.respondText
 import io.ktor.routing.Route
 import io.ktor.routing.get
 import kotlinx.css.*
-import kotlinx.css.properties.*
 import kotlinx.html.*
 import me.notsmatch.sokujichan.model.Sokuji
 import me.notsmatch.sokujichan.service.SokujiService
 import org.apache.commons.lang3.math.NumberUtils
-import java.io.File
-import java.time.format.TextStyle
-import java.util.*
 
 fun Route.renderingController(sokujiService: SokujiService) {
 
     static ("static") {
-        staticRootFolder = File("static")
-        files(".")
+        static("css"){
+            resources("css")
+        }
+        static("icon"){
+            resources("icon")
+        }
     }
     
     get {
@@ -38,7 +38,9 @@ fun Route.renderingController(sokujiService: SokujiService) {
             return@get call.respondHtml(HttpStatusCode.InternalServerError) {
                 head {
                     title { +"正しいIDを入力してください / 即時ちゃん(6vs6)" }
-                    styleLink("/static/styles.css")
+                    link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                    link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                    styleLink("/static/css/main.css")
                 }
                 body {
                     div {
@@ -58,7 +60,9 @@ fun Route.renderingController(sokujiService: SokujiService) {
         val sokuji: Sokuji = sokujiService.getSokuji(guildId, channelId) ?: return@get call.respondHtml(HttpStatusCode.NotFound) {
             head {
                 title { +"データが見つかりません / 即時ちゃん(6vs6)" }
-                styleLink("/static/styles.css")
+                link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                styleLink("/static/css/main.css")
             }
             body {
                 div {
@@ -75,9 +79,9 @@ fun Route.renderingController(sokujiService: SokujiService) {
             return@get call.respondHtml {
                 head {
                     title { +"$teamA vs $teamB / 即時ちゃん(6vs6)" }
-                    styleLink("/static/styles.css")
-                    link ( rel = "icon", href = "/static/favicon.ico", type = "image/x-icon")
-                    link ( rel = "shortcut icon", href = "/static/favicon.ico", type = "image/x-icon")
+                    styleLink("/static/css/main.css")
+                    link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
+                    link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     meta {
                         httpEquiv = "refresh"
                         content = "5"
