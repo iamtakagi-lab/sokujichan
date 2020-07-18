@@ -28,7 +28,7 @@ fun Application.module() {
     val sokujiService = SokujiService()
     val botService = BotService(System.getenv("SOKUJICHAN_TOKEN"), sokujiService,false).start()
 
-    install(Routing) {
+    routing {
         renderingController(sokujiService)
     }
 

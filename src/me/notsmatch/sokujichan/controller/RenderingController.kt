@@ -41,6 +41,10 @@ fun Route.renderingController(sokujiService: SokujiService) {
                     link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     styleLink("/static/css/main.css")
+                    meta {
+                        httpEquiv = "refresh"
+                        content = "1"
+                    }
                 }
                 body {
                     div {
@@ -63,6 +67,10 @@ fun Route.renderingController(sokujiService: SokujiService) {
                 link ( rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                 link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                 styleLink("/static/css/main.css")
+                meta {
+                    httpEquiv = "refresh"
+                    content = "1"
+                }
             }
             body {
                 div {
@@ -84,7 +92,7 @@ fun Route.renderingController(sokujiService: SokujiService) {
                     link ( rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     meta {
                         httpEquiv = "refresh"
-                        content = "5"
+                        content = "1"
                     }
                 }
                 body {
@@ -92,6 +100,9 @@ fun Route.renderingController(sokujiService: SokujiService) {
                         section {
                             p {
                                 +"$teamA ${getScoreA()} - ${getScoreB()} $teamB (${getDifSign(getScoreA().minus(getScoreB()))} 残レース:${getRacesLeft()})"
+                                if(isWinDetermine()) {
+                                    +" 勝利確定!"
+                                }
                             }
                         }
                     }

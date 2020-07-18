@@ -81,6 +81,18 @@ class Sokuji(val guildId: Long,
     }
 
     /**
+     * 勝利確定かどうか
+     */
+    fun isWinDetermine() : Boolean {
+        val possibleMaxDif = getRacesLeft() * 40
+        val dif = getScoreA().minus(getScoreB())
+        if(dif > possibleMaxDif){
+            return true
+        }
+        return false
+    }
+
+    /**
      * @return レースのスコア
      */
     fun getRaceScore(race: Race) : String {
