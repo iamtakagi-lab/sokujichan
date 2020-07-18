@@ -15,4 +15,4 @@ https://discord.com/api/oauth2/authorize?client_id=716931790865956904&permission
 
 ![](https://i.imgur.com/Kv7s0gp.png)
 
-Donate: https://riptakagi.fanbox.cc
+https://riptakagi.fanbox.cc
