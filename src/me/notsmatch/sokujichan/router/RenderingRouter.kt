@@ -40,9 +40,9 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
         val id = call.parameters["id"]!!.toString().split("-")
 
         if(!NumberUtils.isNumber(id[0]) || !NumberUtils.isNumber(id[1])) {
-            return@get call.respondHtml(HttpStatusCode.InternalServerError) {
+            return@get call.respondHtml(HttpStatusCode.NotFound) {
                 head {
-                    title { +"正しいIDを入力してください / 即時ちゃん(6vs6)" }
+                    title { +"データが見つかりません / 即時ちゃん(6vs6)" }
                     link(rel = "icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     link(rel = "shortcut icon", href = "/static/icon/favicon.ico", type = "image/x-icon")
                     styleLink("/static/css/main.css")
@@ -55,7 +55,7 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
                 body {
                     div("overlay") {
                         p("error") {
-                            +"[Error] 500 Internal Server Error: 正しいIDを入力してください"
+                            +"[Error] 404 Not Found: データが見つかりません"
                         }
                     }
                 }
