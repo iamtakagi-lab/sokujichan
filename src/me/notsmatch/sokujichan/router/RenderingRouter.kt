@@ -53,8 +53,8 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
                     }
                 }
                 body {
-                    div("container") {
-                        p {
+                    div("overlay") {
+                        p("error") {
                             +"[Error] 500 Internal Server Error: 正しいIDを入力してください"
                         }
                     }
@@ -77,9 +77,10 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
                     content = "width=device-width, initial-scale=1"
                 }
             }
+
             body {
-                div("container") {
-                    p {
+                div("overlay") {
+                    p("error") {
                         +"[Error] 404 Not Found: データが見つかりません"
                     }
                 }
@@ -105,7 +106,7 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
                     }
                 }
                 body {
-                    div("container"){
+                    div("overlay"){
                          div("header") {
                             p("dif " + if(getScoreA().minus(getScoreB()) < 0) "minus" else if(getScoreA().minus(getScoreB()) > 0) "plus" else "plus-minus") {
                                 +getDifSign(getScoreA().minus(getScoreB()))
