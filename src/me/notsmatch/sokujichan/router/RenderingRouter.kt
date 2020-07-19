@@ -17,7 +17,6 @@ import me.notsmatch.sokujichan.model.Sokuji
 import me.notsmatch.sokujichan.service.SokujiService
 import org.apache.commons.lang3.math.NumberUtils
 
-
 fun Route.renderingRouter(sokujiService: SokujiService) {
 
     static ("static") {
@@ -34,7 +33,7 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
     }
 
     get("status") {
-        call.respond(HttpStatusCode.OK, "status" to "ok")
+        call.respond(HttpStatusCode.OK, mapOf("status" to "ok"))
     }
 
     get("{id}") {
