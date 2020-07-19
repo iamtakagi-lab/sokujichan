@@ -6,6 +6,7 @@ import io.ktor.html.respondHtml
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.*
+import io.ktor.response.respond
 import io.ktor.response.respondRedirect
 import io.ktor.response.respondText
 import io.ktor.routing.Route
@@ -15,6 +16,7 @@ import kotlinx.html.*
 import me.notsmatch.sokujichan.model.Sokuji
 import me.notsmatch.sokujichan.service.SokujiService
 import org.apache.commons.lang3.math.NumberUtils
+
 
 fun Route.renderingRouter(sokujiService: SokujiService) {
 
@@ -29,6 +31,10 @@ fun Route.renderingRouter(sokujiService: SokujiService) {
     
     get {
         call.respondRedirect("https://github.com/riptakagi/sokujichan")
+    }
+
+    get("status") {
+        call.respond(HttpStatusCode.OK, "status" to "ok")
     }
 
     get("{id}") {
