@@ -6,11 +6,9 @@ import me.notsmatch.sokujichan.Config
 import me.notsmatch.sokujichan.service.BotService
 import me.notsmatch.sokujichan.util.JsonUtils
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
 import org.bson.Document
-import java.util.*
 
 class Sokuji(val guildId: Long,
              val channelId: Long,
@@ -37,7 +35,7 @@ class Sokuji(val guildId: Long,
     }
 
     fun getOverlayUrl() : String{
-        return "https://sokujichan.herokuapp.com/$guildId-$channelId"
+        return "https://sokujichan.riptakagi.me/$guildId-$channelId"
     }
 
     fun getTextChannel() : TextChannel? {
@@ -77,8 +75,8 @@ class Sokuji(val guildId: Long,
         race.apply {
             val a = spotsA.getScore()
             val b = spotsB.getScore()
-            return "```$a-$b (${getDifSign(a-b)}) / 合計: ${teamA} ${a}-${b} ${teamB} / 点差: ${getDifSign(getScoreA().minus(getScoreB()))} / @${getRacesLeft()}" +
-                    " ${if(isWinDetermine()) "勝利確定" else ""}  ${if(isLoseDetermine()) "敗北確定" else ""}```"
+            return "```$a-$b (${getDifSign(a-b)}) / 合計: ${teamA} ${a}-${b} ${teamB} / 点差: ${getDifSign(getScoreA().minus(getScoreB()))} / @${getRacesLeft()} " +
+                    "${if(isWinDetermine()) "勝利確定" else ""}  ${if(isLoseDetermine()) "敗北確定" else ""}```"
         }
     }
 
