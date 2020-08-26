@@ -1,6 +1,6 @@
 # Sokuji Chan
 
-MK8DX 6vs6 Calculator
+MK8DX 6vs6 Calculator inject OBS Studio
 
 https://discord.com/api/oauth2/authorize?client_id=716931790865956904&permissions=3136&scope=bot
 
