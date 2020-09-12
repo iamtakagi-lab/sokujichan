@@ -24,7 +24,7 @@ class MongoService(dev: Boolean) {
             this.client = MongoClient(ServerAddress("localhost", 27017))
             this.database = this.client.getDatabase("sokujichan")
         } else {
-            this.client = MongoClient(System.getenv("MONGO_URI"))
+            this.client = MongoClient(MongoClientURI(System.getenv("MONGO_URI")))
             this.database = this.client.getDatabase("sokujichan")
         }
 
