@@ -1,7 +1,0 @@
-{
-  "install": "bash sh/install.sh",
-  "start": "bash sh/start.sh",
-  "watch": {
-    "throttle": 1000
-  }
-}
