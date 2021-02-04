@@ -5,7 +5,7 @@ import kotlin.properties.ReadOnlyProperty
 object Env {
     val TOKEN by string { "" }
     val HOST by string { "0.0.0.0" }
-    val PORT by int { 1017 }
+    val PORT by int { 8080 }
 }
 private val stringOrNull: ReadOnlyProperty<Env, String?>
     get() = ReadOnlyProperty { _, property ->
