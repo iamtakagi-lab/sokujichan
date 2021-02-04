@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  sokujichan:
+    container_name: sokujichan
+    image: iam_takagi/sokujichan:latest
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      # BotのToken
+      TOKEN: XXX
+      # サーバホスト
+      HOST: 0.0.0.0
+      PORT: 8080

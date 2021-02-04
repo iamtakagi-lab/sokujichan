@@ -1,12 +1,21 @@
 group = "me.takagi.sokujichan"
 val artifactID = "sokujichan"
-val versionMajor = 1
-val versionMinor = 0
-val versionPatch = 3
-version = "${versionMajor}.${versionMinor}.${versionPatch}"
-val ktor_version = "1.3.2"
-val kotlin_version = "1.4.21"
-val logback_version = "1.2.1"
+version = Version(1, 0, 3).label
+data class Version(val major: Int, val minor: Int, val patch: Int) {
+    val label: String
+        get() = "$major.$minor.$patch"
+}
+
+object ThirdpartyVersion {
+    const val Ktor = "1.5.1"
+    const val KotlinCssJvm = "1.0.0-pre.86-kotlin-1.3.50"
+    const val Logback = "1.2.3"
+
+    const val JDA = "4.2.0_168"
+    const val JDAUtilities = "3.0.5"
+
+    const val CommonsLang = "3.3.1"
+}
 
 plugins {
     kotlin("jvm") version "1.4.21"
@@ -21,23 +30,18 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$ktor_version")
-    implementation("io.ktor:ktor-server-netty:$ktor_version")
-    implementation("io.ktor:ktor-server-cio:${ktor_version}")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation( "io.ktor:ktor-server-core:$ktor_version")
-    implementation( "io.ktor:ktor-websockets:$ktor_version")
-    implementation( "io.ktor:ktor-locations:$ktor_version")
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
-    implementation( "io.ktor:ktor-jackson:$ktor_version")
-    implementation( "io.ktor:ktor-gson:$ktor_version")
-    implementation( "io.ktor:ktor-html-builder:$ktor_version")
-    implementation( "org.jetbrains:kotlin-css-jvm:1.0.0-pre.86-kotlin-1.3.50")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ThirdpartyVersion.Ktor}")
+    implementation("io.ktor:ktor-server-cio:${ThirdpartyVersion.Ktor}")
+    implementation("ch.qos.logback:logback-classic:${ThirdpartyVersion.Ktor}")
+    implementation( "io.ktor:ktor-server-core:${ThirdpartyVersion.Ktor}")
+    testImplementation("io.ktor:ktor-server-tests:${ThirdpartyVersion.Ktor}")
+    implementation( "io.ktor:ktor-jackson:${ThirdpartyVersion.Ktor}")
+    implementation( "io.ktor:ktor-html-builder:${ThirdpartyVersion.Ktor}")
+    implementation( "org.jetbrains:kotlin-css-jvm:${ThirdpartyVersion.KotlinCssJvm}")
 
-    implementation("net.dv8tion:JDA:4.2.0_168")
-    implementation("com.jagrosh:jda-utilities:3.0.5")
-    implementation("org.apache.commons:commons-lang3:3.1")
-    implementation("org.mongodb:mongo-java-driver:3.12.1")
+    implementation("net.dv8tion:JDA:${ThirdpartyVersion.JDA}")
+    implementation("com.jagrosh:jda-utilities:${ThirdpartyVersion.JDAUtilities}")
+    implementation("org.apache.commons:commons-lang3:${ThirdpartyVersion.CommonsLang}")
 }
 
 
@@ -61,6 +65,12 @@ kotlin {
             useExperimentalAnnotation("kotlin.time.ExperimentalTime")
             useExperimentalAnnotation("kotlin.ExperimentalStdlibApi")
         }
+    }
+}
+
+tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
+    manifest {
+        attributes("Main-Class" to "me.takagi.sokujichan.MainKt")
     }
 }
 
