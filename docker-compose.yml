@@ -3,7 +3,7 @@ version: '3.8'
 services:
   sokujichan:
     container_name: sokujichan
-    image: iam_takagi/sokujichan:latest
+    image: iamtakagi/sokujichan:latest
     restart: always
     ports:
       - 8080:8080
