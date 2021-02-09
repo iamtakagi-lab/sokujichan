@@ -7,7 +7,6 @@ version: '3.8'
 
 services:
   sokujichan:
-    build: .
     container_name: sokujichan
     image: iamtakagi/sokujichan:latest
     restart: always
