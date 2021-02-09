@@ -1,4 +1,7 @@
 # sokujichan
+
+[WIP] No releases there.
+
 8dx 6v6 score calculation discord bot with docker.
 
 `docker-compose.yml`
