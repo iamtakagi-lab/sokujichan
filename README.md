@@ -4,7 +4,7 @@
 
 8dx 6v6 score calculation discord bot with docker.
 
-![](https://gyazo.com/93b7c2095bee49f17134e9018a11463e)
+![](https://i.gyazo.com/93b7c2095bee49f17134e9018a11463e.jpg)
 
 `docker-compose.yml`
 ```yml
