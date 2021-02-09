@@ -1,4 +1,4 @@
-package me.takagi.sokujichan
+package me.takagi.sokujichan.bot
 
 import com.jagrosh.jdautilities.command.CommandClientBuilder
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter
