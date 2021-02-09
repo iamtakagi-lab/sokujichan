@@ -29,9 +29,9 @@ services:
 ```
 
 ```
-# イメージ更新
+# イメージ更新 / Update
 docker pull iamtakagi/sokujichan:latest
 
-# 起動
+# 起動 / Start
 docker-compose up -d
 ```
