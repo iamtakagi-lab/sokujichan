@@ -1,15 +1,10 @@
 package me.takagi.sokujichan.model
 
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import com.mongodb.client.model.Filters
-import me.takagi.sokujichan.Bot
-import me.takagi.sokujichan.Config
-import me.takagi.sokujichan.util.JsonUtils
+import me.takagi.sokujichan.bot.Bot
+import me.takagi.sokujichan.common.Env
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
-import org.bson.Document
 
 class Sokuji(val guildId: Long,
              val channelId: Long,
@@ -27,7 +22,7 @@ class Sokuji(val guildId: Long,
 
         private val list = mutableListOf<Sokuji>()
 
-        fun get(guildId: Long, channelId: Long): Sokuji? {
+        fun find(guildId: Long, channelId: Long): Sokuji? {
             return list.find { it.guildId == guildId && it.channelId == channelId }
         }
 
@@ -35,7 +30,7 @@ class Sokuji(val guildId: Long,
             return list.filter { it.guildId == guildId }
         }
 
-        fun add(sokuji: Sokuji): Sokuji? {
+        fun add(sokuji: Sokuji): Sokuji {
             list.add(sokuji)
             return sokuji
         }
@@ -53,16 +48,16 @@ class Sokuji(val guildId: Long,
     fun start() {
         val channel = getTextChannel() ?: return
         channel.sendMessage(EmbedBuilder().apply {
-            setColor(Config.EMBED_COLOR)
+            setColor(Env.EMBED_COLOR)
             setAuthor("即時集計を開始しました")
             setTitle("$teamA vs $teamB")
             addField("Stream Overlay", getOverlayUrl(), false)
-            addField("Guide", "[Click to View](${Config.GUIDE_URL})", false)
+            addField("Guide", "[Click to View](https://github.com/iam-takagi/sokujichan)", false)
         }.build()).queue()
     }
 
     fun getOverlayUrl(): String {
-        return "http://localhost/$guildId-$channelId"
+        return "http://localhost:${Env.PORT}/overlay/$guildId/$channelId"
     }
 
     fun getTextChannel(): TextChannel? {
