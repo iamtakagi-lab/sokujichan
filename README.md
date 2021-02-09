@@ -1,5 +1,5 @@
 # sokujichan
-8dx 6v6 score calculation bot with docker.
+8dx 6v6 score calculation discord bot with docker.
 
 `docker-compose.yml`
 ```yml
