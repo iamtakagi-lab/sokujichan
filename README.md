@@ -2,7 +2,7 @@
 
 [WIP] No releases there.
 
-8dx 6v6 score calculation discord bot with docker.
+MarioKart 8DX 6v6 score calculation discord bot with docker.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
