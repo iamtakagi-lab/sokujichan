@@ -27,3 +27,11 @@ services:
       # Embed color
       EMBED_COLOR: 83,221,172
 ```
+
+```
+# イメージ更新
+docker pull slashnephy/saya:latest
+
+# 起動
+docker-compose up -d
+```
