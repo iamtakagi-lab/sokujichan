@@ -1,25 +1,48 @@
 package me.takagi.sokujichan
 
 import io.ktor.application.*
-import io.ktor.config.ApplicationConfig
 import io.ktor.features.*
-import io.ktor.routing.*
 import io.ktor.http.*
-import io.ktor.gson.*
-import io.ktor.locations.KtorExperimentalLocationsAPI
-import io.ktor.locations.Locations
-import io.ktor.util.KtorExperimentalAPI
-import io.ktor.websocket.WebSockets
+import io.ktor.http.content.*
+import io.ktor.request.*
+import io.ktor.routing.*
+import me.takagi.sokujichan.common.Env
+import me.takagi.sokujichan.common.createLogger
+import me.takagi.sokujichan.endpoints.getIndex
+import me.takagi.sokujichan.endpoints.getOverlay
+import mu.KotlinLogging
 
-
-@KtorExperimentalAPI
-@KtorExperimentalLocationsAPI
 fun Application.module() {
 
-    val bot = Bot(System.getenv("TOKEN"),false).start()
+    install(CallLogging) {
+        logger = KotlinLogging.createLogger("sokujichan.server")
+        format { call ->
+            when (val status = call.response.status()) {
+                HttpStatusCode.Found -> "$status: ${call.request.toLogString()} -> ${call.response.headers[HttpHeaders.Location]}"
+                null -> ""
+                else -> "$status: ${call.request.httpMethod.value} ${call.request.uri}"
+            }
+        }
+    }
 
     routing {
-        getOverlay()
+        route(Env.BASE_URI) {
+
+            getIndex()
+
+            static("static") {
+                static("css") {
+                    resources("css")
+                }
+                static("icon") {
+                    resources("icon")
+                }
+            }
+
+            route("overlay") {
+                getOverlay()
+            }
+        }
     }
 }
 

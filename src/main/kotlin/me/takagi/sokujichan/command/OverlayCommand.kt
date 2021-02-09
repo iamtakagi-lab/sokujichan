@@ -2,7 +2,7 @@ package me.takagi.sokujichan.command
 
 import com.jagrosh.jdautilities.command.Command
 import com.jagrosh.jdautilities.command.CommandEvent
-import me.takagi.sokujichan.Config
+import me.takagi.sokujichan.common.Env
 import me.takagi.sokujichan.model.Sokuji
 import net.dv8tion.jda.api.EmbedBuilder
 
@@ -15,13 +15,13 @@ class OverlayCommand: Command() {
 
     override fun execute(event: CommandEvent?) {
         event?.apply {
-            val sokuji = Sokuji.get(guild.idLong, channel.idLong)?: return reply("即時集計は開始されていません")
+            val sokuji = Sokuji.find(guild.idLong, channel.idLong)?: return reply("即時集計は開始されていません")
             sokuji.apply {
                 reply(EmbedBuilder().apply {
-                    setColor(Config.EMBED_COLOR)
+                    setColor(Env.EMBED_COLOR)
                     setTitle("$teamA vs $teamB")
                     addField("Stream Overlay", getOverlayUrl(), false)
-                    addField("Guide", "[Click to View](${Config.GUIDE_URL})", false)
+                    addField("Guide", "[Click to View](https://github.com/iam-takagi/sokujichan)", false)
                 }.build())
             }
         }
