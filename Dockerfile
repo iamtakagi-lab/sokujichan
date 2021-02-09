@@ -16,14 +16,15 @@ FROM gradle:jdk8 AS build
 WORKDIR /app
 COPY --from=cache /app/gradle /home/gradle/.gradle
 COPY *.gradle.kts gradle.properties /app/
-COPY src/main/ /app/src/main/
+COPY /src/main/ /app/src/main/
+
 # Stop printing Welcome
 RUN gradle -version > /dev/null \
     && gradle shadowJar --parallel --no-daemon
 
 # Final Stage
 FROM openjdk:8-jre-alpine
-COPY --from=build /app/build/libs/sokujichan.jar /app/sokujichan.jar
+COPY --from=build /app/build/libs/sokujichan-all.jar /app/sokujichan.jar
 
 WORKDIR /app
 ENTRYPOINT ["java", "-jar", "/app/sokujichan.jar"]
