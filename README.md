@@ -12,7 +12,7 @@
 
 ## インストール / Installation
 
-### Dockerでの導入を推奨
+### Dockerでの導入を推奨します
 
 `docker-compose.yml`
 ```yml
