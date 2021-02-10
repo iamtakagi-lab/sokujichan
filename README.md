@@ -1,6 +1,6 @@
 # sokujichan
 
-8dx 6v6 score streaming overlay with discord bot.
+8dx 6v6 score overlay for broadcast with discord bot.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
