@@ -5,6 +5,7 @@ import me.takagi.sokujichan.common.Env
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.internal.utils.IOUtil.getHost
 
 class Sokuji(val guildId: Long,
              val channelId: Long,
@@ -26,7 +27,7 @@ class Sokuji(val guildId: Long,
             return list.find { it.guildId == guildId && it.channelId == channelId }
         }
 
-        fun filter (guildId: Long): List<Sokuji> {
+        fun filter(guildId: Long): List<Sokuji> {
             return list.filter { it.guildId == guildId }
         }
 
@@ -35,11 +36,11 @@ class Sokuji(val guildId: Long,
             return sokuji
         }
 
-        fun remove(sokuji: Sokuji?) : Boolean {
+        fun remove(sokuji: Sokuji?): Boolean {
             return list.remove(sokuji)
         }
 
-        fun removeAll(sokuji: List<Sokuji>) : Boolean {
+        fun removeAll(sokuji: List<Sokuji>): Boolean {
             return list.removeAll(sokuji)
         }
     }
@@ -56,8 +57,27 @@ class Sokuji(val guildId: Long,
         }.build()).queue()
     }
 
+    private val host: String
+        get() = buildString {
+            append("http")
+            if (Env.HOSTNAME != null) {
+                append("s")
+            }
+            append("://")
+
+            if (Env.HOSTNAME != null) {
+                append(Env.HOSTNAME)
+            } else {
+                append("localhost")
+            }
+
+            if(Env.PORT != 80) {
+                append(":" + Env.PORT)
+            }
+        }
+
     fun getOverlayUrl(): String {
-        return "http://localhost:${Env.PORT}/overlay/$guildId/$channelId"
+        return "${host}/overlay/$guildId/$channelId"
     }
 
     fun getTextChannel(): TextChannel? {

@@ -1,4 +1,3 @@
-
 # Gradle Cache Dependencies Stage
 # This stage caches plugin/project dependencies from *.gradle.kts and gradle.properties.
 # Gradle image erases GRADLE_USER_HOME each layer. So we need COPY GRADLE_USER_HOME.
