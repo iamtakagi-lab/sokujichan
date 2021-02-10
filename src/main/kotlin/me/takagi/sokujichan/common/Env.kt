@@ -7,10 +7,12 @@ object Env {
     val BOT_TOKEN by string { "" }
     val HOST by string { "0.0.0.0" }
     val PORT by int { 8080 }
+    val HOSTNAME by stringOrNull
     val BASE_URI by string { "/" }
     val LOG by string { "INFO" }
     val EMBED_COLOR by color { Color(83, 221, 172) }
 }
+
 private val stringOrNull: ReadOnlyProperty<Env, String?>
     get() = ReadOnlyProperty { _, property ->
         System.getenv(property.name)
