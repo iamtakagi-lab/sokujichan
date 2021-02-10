@@ -9,7 +9,7 @@ services:
       - 8080:8080
     environment:
       # Bot Token (必須)
-      BOT_TOKEN: Nzk1MDAyMjkwNjY1OTQ3MTc2.X_DBlA.hmSKSDbOpaKPNx4VOL68WV11FEI
+      BOT_TOKEN: xxx
       # Base Uri
       BASE_URI: /
       # Server Host
