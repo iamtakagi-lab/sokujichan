@@ -12,6 +12,8 @@
 
 ## インストール / Installation
 
+### Dockerでの導入を推奨
+
 `docker-compose.yml`
 ```yml
 version: '3.8'
