@@ -1,8 +1,6 @@
 # sokujichan
 
-[WIP] No releases there.
-
-MarioKart 8DX 6v6 score calculation discord bot with docker.
+8dx 6v6 score streaming overlay with discord bot.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
