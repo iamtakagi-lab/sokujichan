@@ -19,7 +19,7 @@ class RaceCommand : Command() {
     override fun execute(event: CommandEvent?) {
         event?.apply {
             val args = StringUtils.split(args)
-            val sokuji = Sokuji.get(guild.idLong, channel.idLong) ?: return reply("即時集計は開始されていません")
+            val sokuji = Sokuji.find(guild.idLong, channel.idLong) ?: return reply("即時集計は開始されていません")
 
             if(sokuji.getRacesLeft() == 0) return reply("レースは終了しました")
 

@@ -13,7 +13,7 @@ class StopCommand : Command() {
 
     override fun execute(event: CommandEvent?) {
         event?.apply {
-            if(Sokuji.remove(Sokuji.get(guild.idLong, channel.idLong))){
+            if(Sokuji.remove(Sokuji.find(guild.idLong, channel.idLong))){
                 reply("即時集計を終了しました")
             }else{
                 reply("即時集計は開始されていません")

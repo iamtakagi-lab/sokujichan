@@ -1,1 +1,0 @@
-web: java -jar build/libs/sokujichan-1.0.3-SNAPSHOT.jar
