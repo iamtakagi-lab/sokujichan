@@ -47,3 +47,9 @@ docker pull iamtakagi/sokujichan:latest
 # 起動 / Start
 docker-compose up -d
 ```
+
+### 配信ソフト (OBSでの設定例)
+`ソース -> ブラウザ -> URLを貼り付け`\
+※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
+
+![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
