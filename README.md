@@ -2,6 +2,8 @@
 
 8dx 6v6 score overlay for broadcast with discord bot.
 
+No provided a public bot.
+
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
 ![](https://i.gyazo.com/e2b6f639ddd5adcde9e856d6148f04da.png)
