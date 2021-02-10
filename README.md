@@ -26,14 +26,16 @@ services:
     ports:
       - 8080:8080
     environment:
-      # Bot Token (Required)
-      BOT_TOKEN: XXX
+      # Bot Token (必須)
+      BOT_TOKEN: xxx
       # Base Uri
       BASE_URI: /
       # Server Host
       HOST: 0.0.0.0
       # Server Port
       PORT: 8080
+      # HOSTNAME (外部公開しない場合: null で可)
+      HOSTNAME:
       # Logger
       LOG: INFO
       # Embed color
@@ -53,3 +55,14 @@ docker-compose up -d
 ※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
 
 ![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
+
+インストールはこれで終了です。
+
+## 外部公開する場合
+`docker-compose.yml`
+```yml
+# Server Port (必要次第で書き換えてください)
+PORT: 8080
+# HOSTNAME (外部公開しない場合: null で可)
+HOSTNAME: ドメイン名 (xxx.jp 等)
+```
