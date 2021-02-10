@@ -32,7 +32,7 @@ services:
       BASE_URI: /
       # Server Host
       HOST: 0.0.0.0
-      # Server Port
+      # Server Port  (必要次第で書き換えてください)
       PORT: 8080
       # HOSTNAME (外部公開しない場合: null で可)
       HOSTNAME:
