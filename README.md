@@ -14,6 +14,8 @@ No provided a public bot.
 
 ## インストール / Installation
 
+`git clone https://github.com/iam-takagi/sokujichan.git`
+
 ### Dockerでの導入を推奨します
 
 このようなタグがあります\
