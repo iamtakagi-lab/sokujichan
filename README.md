@@ -1,5 +1,14 @@
 # 💬 sokujichan
 
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.4.21-blue)](https://kotlinlang.org)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/releases)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/iam-takagi/sokujichan/Docker)](https://hub.docker.com/r/iamtakagi/sokujichan)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/iamtakagi/sokujichan)](https://hub.docker.com/r/iamtakagi/sokujichan)
+[![Docker Pulls](https://img.shields.io/docker/pulls/iamtakagi/sokujichan)](https://hub.docker.com/r/iamtakagi/sokujichan)
+[![license](https://img.shields.io/github/license/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/blob/master/LICENSE)
+[![issues](https://img.shields.io/github/issues/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/pulls)
+
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Bot / MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
 Botの一般提供は行っておりません / No provided a public bot.
