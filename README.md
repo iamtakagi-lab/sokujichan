@@ -10,10 +10,11 @@
 [![pull requests](https://img.shields.io/github/issues-pr/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/pulls)
 
 ## これはなに / What is this?
-マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。/
+マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。\
 MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
-Botの一般提供は行っていません / No provided a public bot.
+Botの一般提供は行っていません。\
+No provided a public bot.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
