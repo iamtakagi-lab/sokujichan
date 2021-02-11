@@ -1,4 +1,4 @@
-# 💬sokujichan
+# 💬 sokujichan
 
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Bot / MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
