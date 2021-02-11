@@ -1,4 +1,4 @@
-# 💬 sokujichan
+# 💬 sokujichan: 8dx 6v6 the score overlay for broadcast with discord bot.
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.4.21-blue)](https://kotlinlang.org)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/releases)
