@@ -8,7 +8,7 @@ No provided a public bot.
 
 ![](https://i.gyazo.com/e2b6f639ddd5adcde9e856d6148f04da.png)
 
-`_sokujichan for Help`   
+`_sokujichan for help`   
 
 ![](https://i.gyazo.com/4578c6b17349bbfffcff9086506fa15b.png)
 
@@ -16,7 +16,7 @@ No provided a public bot.
 
 ### Dockerでの導入を推奨します
 
-このようなタグがあります
+このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
 `:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
 `:v<tag>` GitHub 上のリリースに対応します。
