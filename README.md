@@ -9,7 +9,9 @@
 [![issues](https://img.shields.io/github/issues/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/pulls)
 
-マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Bot / MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
+## What is this? / これはなに
+マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。/
+MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
 Botの一般提供は行っていません / No provided a public bot.
 
