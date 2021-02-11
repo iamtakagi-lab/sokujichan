@@ -57,6 +57,9 @@ docker pull iamtakagi/sokujichan:latest
 
 # 起動 / Start
 docker-compose up -d
+
+# 停止 / Shutdown
+docker-compose down
 ```
 
 ### 配信ソフト (OBSでの設定例)
@@ -68,6 +71,9 @@ docker-compose up -d
 インストールはこれで終了です。
 
 ## 外部公開する場合
+ポート開放は各自で行ってください。\
+セキュリティに関する問題は、一切の責任を負いかねます。
+
 `docker-compose.yml`
 ```yml
 # Server Port (必要次第で書き換えてください)
