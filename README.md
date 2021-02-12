@@ -33,7 +33,7 @@ No provided a public bot.
 このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
 `:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
-`:v<tag>` GitHub 上のリリースに対応します。
+`:<tag>` GitHub 上のリリースに対応します。
 
 `docker-compose.yml`
 ```yml
