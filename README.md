@@ -26,7 +26,9 @@ No provided a public bot.
 
 ## インストール / Installation
 
-`git clone https://github.com/iam-takagi/sokujichan.git`
+```console
+git clone https://github.com/iam-takagi/sokujichan.git
+```
 
 ### Dockerでの導入を推奨します
 
@@ -63,7 +65,7 @@ services:
       EMBED_COLOR: 83,221,172
 ```
 
-```
+```console
 # イメージ更新 / Update
 docker pull iamtakagi/sokujichan:latest
 
