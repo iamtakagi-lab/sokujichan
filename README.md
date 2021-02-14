@@ -88,7 +88,7 @@ docker-compose down
 設定値の変更は 環境変数経由でしか行なえません。ご了承ください。
 
 ```console
-LOG=DEBUG java -jar /path/to/sokujichan.jar
+LOG=INFO java -jar /path/to/sokujichan.jar
 ```
 
 ***
