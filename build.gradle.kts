@@ -1,8 +1,12 @@
 group = "me.takagi.sokujichan"
 
-object ThirdpartyVersion {
+object Versions {
     const val Ktor = "1.5.1"
     const val KotlinCssJvm = "1.0.0-pre.86-kotlin-1.3.50"
+
+    const val KMongoCoroutine = "4.2.4"
+
+    const val JsonKt = "6.0.2"
 
     const val JDA = "4.2.0_168"
     const val JDAUtilities = "3.0.5"
@@ -30,36 +34,40 @@ repositories {
 
 dependencies {
     // Ktor Server
-    implementation("io.ktor:ktor-server-cio:${ThirdpartyVersion.Ktor}")
-    implementation( "io.ktor:ktor-server-core:${ThirdpartyVersion.Ktor}")
+    implementation("io.ktor:ktor-server-cio:${Versions.Ktor}")
+    implementation( "io.ktor:ktor-server-core:${Versions.Ktor}")
+
+    // MongoDB
+    implementation("org.litote.kmongo:kmongo-coroutine:${Versions.KMongoCoroutine}")
 
     // HTML
-    implementation( "io.ktor:ktor-html-builder:${ThirdpartyVersion.Ktor}")
-    implementation( "org.jetbrains:kotlin-css-jvm:${ThirdpartyVersion.KotlinCssJvm}")
+    implementation( "io.ktor:ktor-html-builder:${Versions.Ktor}")
+    implementation( "org.jetbrains:kotlin-css-jvm:${Versions.KotlinCssJvm}")
 
     // JDA
-    implementation("net.dv8tion:JDA:${ThirdpartyVersion.JDA}")
-    implementation("com.jagrosh:jda-utilities:${ThirdpartyVersion.JDAUtilities}")
+    implementation("net.dv8tion:JDA:${Versions.JDA}")
+    implementation("com.jagrosh:jda-utilities:${Versions.JDAUtilities}")
 
     // Logging
-    implementation("io.github.microutils:kotlin-logging:${ThirdpartyVersion.KotlinLogging}")
-    implementation("ch.qos.logback:logback-core:${ThirdpartyVersion.Logback}")
-    implementation("ch.qos.logback:logback-classic:${ThirdpartyVersion.Logback}")
-    implementation("org.fusesource.jansi:jansi:${ThirdpartyVersion.jansi}")
+    implementation("io.github.microutils:kotlin-logging:${Versions.KotlinLogging}")
+    implementation("ch.qos.logback:logback-core:${Versions.Logback}")
+    implementation("ch.qos.logback:logback-classic:${Versions.Logback}")
+    implementation("org.fusesource.jansi:jansi:${Versions.jansi}")
 
     // Util
-    implementation("org.apache.commons:commons-lang3:${ThirdpartyVersion.CommonsLang}")
+    implementation("blue.starry:jsonkt:${Versions.JsonKt}")
+    implementation("org.apache.commons:commons-lang3:${Versions.CommonsLang}")
 
     // Logging
-    implementation("io.github.microutils:kotlin-logging:${ThirdpartyVersion.KotlinLogging}")
-    implementation("ch.qos.logback:logback-core:${ThirdpartyVersion.Logback}")
-    implementation("ch.qos.logback:logback-classic:${ThirdpartyVersion.Logback}")
-    implementation("org.fusesource.jansi:jansi:${ThirdpartyVersion.jansi}")
+    implementation("io.github.microutils:kotlin-logging:${Versions.KotlinLogging}")
+    implementation("ch.qos.logback:logback-core:${Versions.Logback}")
+    implementation("ch.qos.logback:logback-classic:${Versions.Logback}")
+    implementation("org.fusesource.jansi:jansi:${Versions.jansi}")
 
     // Testing
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit5"))
-    testImplementation("org.junit.jupiter:junit-jupiter:${ThirdpartyVersion.JUnit}")
+    testImplementation("org.junit.jupiter:junit-jupiter:${Versions.JUnit}")
 }
 
 kotlin {
