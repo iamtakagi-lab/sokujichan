@@ -26,11 +26,15 @@ No provided a public bot.
 
 ## インストール / Installation
 
+- [Discord Developer Portal](https://discord.com/developers/applications) にてBotを作成します。
+  - Privileged Gateway Intents を ON の状態にします。
+
+- Cloneします
 ```console
 git clone https://github.com/iam-takagi/sokujichan.git
 ```
 
-### Dockerでの導入を推奨します
+### Dockerでの導入 (推奨)
 
 このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
@@ -83,6 +87,16 @@ docker-compose down
 ![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
 
 インストールはこれで終了です。
+
+## 直接実行 (非推奨)
+
+リリースから Jar を取ってきて実行するか `./gradlew run` で実行できます。
+
+設定値の変更は 環境変数経由でしか行なえません。ご了承ください。
+
+```console
+LOG=DEBUG java -jar /path/to/sokujichan.jar
+```
 
 ## 外部公開する場合
 ポート開放は各自で行ってください。\
