@@ -32,6 +32,7 @@ No provided a public bot.
 - Cloneします
 ```console
 git clone https://github.com/iam-takagi/sokujichan.git
+cd sokujichan
 ```
 
 ### Dockerでの導入 (推奨)
