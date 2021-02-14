@@ -62,7 +62,7 @@ services:
       HOST: 0.0.0.0
       # Server Port  (必要次第で書き換えてください)
       PORT: 8080
-      # HOSTNAME (外部公開しない場合: null で可)
+      # HOSTNAME (外部公開しない場合: 未入力(null)にしてください。絶対に何も書き込まないでください。)
       HOSTNAME:
       # Logger
       LOG: INFO
