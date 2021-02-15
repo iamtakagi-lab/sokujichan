@@ -26,10 +26,8 @@ class StartCommand: Command() {
 
                 runBlocking {
                     if (Sokuji.find(guild.idLong, channel.idLong) != null) return@runBlocking reply("既に即時集計が開始されています")
-                }
 
-                runBlocking {
-                    val sokuji = Sokuji.add(Sokuji(guild.idLong, channel.idLong, args[0], args[1]))
+                    val sokuji = Sokuji.save(Sokuji(guild.idLong, channel.idLong, args[0], args[1]))
                     sokuji.start()
                 }
 
