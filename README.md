@@ -13,8 +13,8 @@
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。\
 MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
-Botの一般提供は行っていません。\
-No provided a public bot.
+Botの一般提供は行っていません。各自でインストールを行ってください。\
+No provided a public bot. Please install yourself.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
@@ -143,3 +143,11 @@ PORT: 8080
 # HOSTNAME (外部公開しない場合: null で可)
 HOSTNAME: ドメイン名 (xxx.jp 等)
 ```
+
+## 貢献 / Contribution
+
+### Issues
+バグの報告・改善点・提案等を行ってください。
+
+### Pull Requests
+開発には Intellij IDEA を推奨しています。
