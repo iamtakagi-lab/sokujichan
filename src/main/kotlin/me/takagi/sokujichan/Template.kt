@@ -2,8 +2,6 @@ package me.takagi.sokujichan
 
 import io.ktor.html.*
 import kotlinx.html.*
-import me.takagi.sokujichan.model.Sokuji
-import org.intellij.lang.annotations.Flow
 
 class OverlayTemplate(val headTitle: String) : Template<HTML> {
 

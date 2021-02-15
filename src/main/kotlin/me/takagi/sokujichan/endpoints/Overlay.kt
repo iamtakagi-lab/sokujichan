@@ -2,8 +2,6 @@ package me.takagi.sokujichan.endpoints
 
 import io.ktor.application.*
 import io.ktor.html.*
-import io.ktor.http.ContentType
-import io.ktor.http.HttpStatusCode
 import io.ktor.http.cio.websocket.*
 import io.ktor.http.content.*
 import io.ktor.response.*
@@ -13,7 +11,6 @@ import kotlinx.css.*
 import kotlinx.html.*
 import me.takagi.sokujichan.OverlayTemplate
 import me.takagi.sokujichan.common.createLogger
-import me.takagi.sokujichan.model.Sokuji
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.createLogger("sokujichan.endpoints")
