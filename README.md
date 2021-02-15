@@ -44,8 +44,6 @@ cd sokujichan
 
 ### Dockerでの導入 (推奨): こちらのほうが環境構築が容易です
 
-
-
 このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
 `:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
@@ -67,7 +65,7 @@ services:
     depends_on:
       - mongo
     environment:
-      # Bot Token (ここだけ書き換えれば動く)
+      # Bot Token (ここだけ書き換えれば動く: 入力必須)
       BOT_TOKEN: xxx
       # Base Uri
       BASE_URI: /
