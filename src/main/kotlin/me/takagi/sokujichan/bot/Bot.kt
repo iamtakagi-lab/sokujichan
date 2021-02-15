@@ -2,14 +2,12 @@ package me.takagi.sokujichan.bot
 
 import com.jagrosh.jdautilities.command.CommandClientBuilder
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter
+import kotlinx.coroutines.runBlocking
 import me.takagi.sokujichan.command.*
 import me.takagi.sokujichan.model.Sokuji
 import net.dv8tion.jda.api.*
-import net.dv8tion.jda.api.entities.Activity.watching
-import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.guild.GuildLeaveEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
-import java.awt.Color
 import java.util.*
 
 class Bot (val token: String) {
@@ -53,9 +51,14 @@ class Bot (val token: String) {
 
 class Listener : ListenerAdapter() {
 
+    /**
+     * BotがGuildから退出した際にデータベースのデータを削除する
+     */
     override fun onGuildLeave(event: GuildLeaveEvent) {
         event.apply {
-            Sokuji.removeAll(Sokuji.filter(guild.idLong))
+            runBlocking {
+                Sokuji.removeAll(guild.idLong)
+            }
         }
     }
 }

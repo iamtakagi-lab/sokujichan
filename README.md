@@ -13,8 +13,8 @@
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。\
 MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
-Botの一般提供は行っていません。\
-No provided a public bot.
+Botの一般提供は行っていません。各自でインストールを行ってください。\
+No provided a public bot. Please install yourself.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
@@ -23,6 +23,13 @@ No provided a public bot.
 `_sokujichan for help`   
 
 ![](https://i.gyazo.com/4578c6b17349bbfffcff9086506fa15b.png)
+
+## 動作環境
+Linux/macOS/Windows
+
+## インストールに必要なもの
+- [Git](https://git-scm.com/downloads)
+- [Docker](https://www.docker.com/get-started)
 
 ## インストール / Installation
 
@@ -35,7 +42,7 @@ git clone https://github.com/iam-takagi/sokujichan.git
 cd sokujichan
 ```
 
-### Dockerでの導入 (推奨)
+### Dockerでの導入 (推奨): こちらのほうが環境構築が容易です
 
 このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
@@ -58,7 +65,7 @@ services:
     depends_on:
       - mongo
     environment:
-      # Bot Token (必須)
+      # Bot Token (ここだけ書き換えれば動く: 入力必須)
       BOT_TOKEN: xxx
       # Base Uri
       BASE_URI: /
@@ -100,15 +107,10 @@ docker-compose up -d
 
 # 停止 / Shutdown
 docker-compose down
+
+# ログ確認 / Logs
+docker-compose logs -f
 ```
-
-### 配信ソフト (OBSでの設定例)
-`ソース -> ブラウザ -> URLを貼り付け`\
-※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
-
-![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
-
-インストールはこれで終了です。
 
 ## 直接実行 (非推奨)
 
@@ -117,8 +119,18 @@ docker-compose down
 設定値の変更は 環境変数経由でしか行なえません。ご了承ください。
 
 ```console
-LOG=DEBUG java -jar /path/to/sokujichan.jar
+LOG=INFO java -jar /path/to/sokujichan.jar
 ```
+
+***
+
+インストールはこれで終了です。
+
+## 配信ソフト (OBSでの設定例)
+`ソース -> ブラウザ -> URLを貼り付け`\
+※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
+
+![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
 
 ## 外部公開する場合
 ポート開放は各自で行ってください。\
@@ -131,3 +143,11 @@ PORT: 8080
 # HOSTNAME (外部公開しない場合: null で可)
 HOSTNAME: ドメイン名 (xxx.jp 等)
 ```
+
+## 貢献 / Contribution
+
+### Issues
+バグの報告・改善点・提案等を行ってください。
+
+### Pull Requests
+開発には Intellij IDEA を推奨しています。

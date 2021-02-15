@@ -1,48 +1,104 @@
 package me.takagi.sokujichan.model
 
+import com.mongodb.client.model.Filters
+import com.mongodb.client.model.ReplaceOptions
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import me.takagi.sokujichan.bot.Bot
+import me.takagi.sokujichan.collection
 import me.takagi.sokujichan.common.Env
+import me.takagi.sokujichan.util.ScoreUtils
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
-import net.dv8tion.jda.internal.utils.IOUtil.getHost
+import org.bson.conversions.Bson
+import org.litote.kmongo.eq
+import java.util.*
 
-class Sokuji(val guildId: Long,
-             val channelId: Long,
-             val teamA: String,
-             val teamB: String,
-             val races: MutableList<Race> = mutableListOf(),
-             var addedScoreA: Int = 0,
-             var addedScoreB: Int = 0,
-             var penaltyScoreA: Int = 0,
-             var penaltyScoreB: Int = 0,
-             var afterRace: Int = 0,
-             var raceSize: Int = 12) {
+@Serializable
+class Sokuji(
+    val guildId: Long,
+    val channelId: Long,
+    val teamA: String,
+    val teamB: String,
+    val races: MutableList<Race> = mutableListOf(),
+    var addedScoreA: Int = 0,
+    var addedScoreB: Int = 0,
+    var penaltyScoreA: Int = 0,
+    var penaltyScoreB: Int = 0,
+    var afterRace: Int = 0,
+    var raceSize: Int = 12) {
+
+    /**
+     * レース毎の順位データ
+     * @param spots 順位
+     */
+    @Serializable
+    data class Race(val spotsA: Spots, val spotsB: Spots)
+
+    /**
+     * 順位管理、点数演算クラス
+     * @param data 順位データ
+     */
+    @Serializable
+    data class Spots(val data: List<Int>) {
+
+        fun getScore(): Int {
+            return ScoreUtils.getScore(data)
+        }
+
+        fun split(): String {
+            val builder = StringBuilder()
+            val it = data.iterator()
+            while (it.hasNext()) {
+                val spot = it.next()
+                builder.append(spot)
+
+                if (it.hasNext()) {
+                    builder.append(":")
+                }
+            }
+
+            return builder.toString()
+        }
+
+        fun format(): String {
+            val builder = StringBuilder()
+            data.forEach { builder.append("${it}位 ") }
+            return builder.toString()
+        }
+    }
 
     companion object {
 
-        private val list = mutableListOf<Sokuji>()
-
-        fun find(guildId: Long, channelId: Long): Sokuji? {
-            return list.find { it.guildId == guildId && it.channelId == channelId }
+        suspend fun getListByGuild(guildId: Long) : List<Sokuji> {
+            return collection.find(Sokuji::guildId eq guildId).toList()
         }
 
-        fun filter(guildId: Long): List<Sokuji> {
-            return list.filter { it.guildId == guildId }
+        suspend fun find(guildId: Long, channelId: Long) : Sokuji? {
+            return collection.findOne(Sokuji::guildId eq guildId, Sokuji::channelId eq channelId)
         }
 
-        fun add(sokuji: Sokuji): Sokuji {
-            list.add(sokuji)
+        suspend fun save(sokuji: Sokuji) : Sokuji{
+                collection.replaceOne(
+                    Filters.and(Filters.eq("guildId", sokuji.guildId), Filters.eq("channelId", sokuji.channelId)),
+                    sokuji,
+                    ReplaceOptions().upsert(true)
+                )
             return sokuji
         }
 
-        fun remove(sokuji: Sokuji?): Boolean {
-            return list.remove(sokuji)
+        suspend fun remove(guildId: Long, channelId: Long): Boolean {
+            return collection.deleteOne(Filters.and(Filters.eq("guildId", guildId), Filters.eq("channelId", channelId))).wasAcknowledged()
         }
 
-        fun removeAll(sokuji: List<Sokuji>): Boolean {
-            return list.removeAll(sokuji)
+        suspend fun removeAll(guildId: Long) {
+            collection.deleteMany(Sokuji::guildId eq guildId)
         }
+    }
+
+    suspend fun save() {
+        save(this)
     }
 
 
