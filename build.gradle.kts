@@ -16,10 +16,13 @@ object Versions {
     const val CommonsLang = "3.3.1"
 
     const val JUnit = "5.7.0"
+
+    const val KotlinxSerializationJson = "1.0.1"
 }
 
 plugins {
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.30"
+    kotlin("plugin.serialization") version "1.4.30"
     id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
@@ -35,8 +38,11 @@ dependencies {
     implementation("io.ktor:ktor-server-cio:${Versions.Ktor}")
     implementation( "io.ktor:ktor-server-core:${Versions.Ktor}")
 
+    // Json
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KotlinxSerializationJson}")
+
     // MongoDB
-    implementation("org.litote.kmongo:kmongo-coroutine:${Versions.KMongoCoroutine}")
+    implementation("org.litote.kmongo:kmongo-coroutine-serialization:${Versions.KMongoCoroutine}")
 
     // HTML
     implementation( "io.ktor:ktor-html-builder:${Versions.Ktor}")
