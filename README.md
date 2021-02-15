@@ -143,7 +143,7 @@ LOG=INFO java -jar /path/to/sokujichan.jar
 # Server Port (必要次第で書き換えてください)
 PORT: 8080
 # HOSTNAME (外部公開しない場合: null で可)
-HOSTNAME: ドメイン名 (xxx.jp 等)
+HOSTNAME: ホスト名, ドメイン, IP等
 ```
 
 ## 貢献 / Contribution
