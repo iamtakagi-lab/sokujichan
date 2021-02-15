@@ -2,9 +2,7 @@ package me.takagi.sokujichan.command
 
 import com.jagrosh.jdautilities.command.Command
 import com.jagrosh.jdautilities.command.CommandEvent
-import javafx.application.Application.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import me.takagi.sokujichan.model.Sokuji
 import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.math.NumberUtils
