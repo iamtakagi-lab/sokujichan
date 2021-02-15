@@ -1,11 +1,13 @@
 package me.takagi.sokujichan.model
 
+import com.mongodb.client.model.Filters
+import com.mongodb.client.model.ReplaceOptions
 import me.takagi.sokujichan.bot.Bot
+import me.takagi.sokujichan.collection
 import me.takagi.sokujichan.common.Env
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
-import net.dv8tion.jda.internal.utils.IOUtil.getHost
 
 class Sokuji(val guildId: Long,
              val channelId: Long,
@@ -21,27 +23,25 @@ class Sokuji(val guildId: Long,
 
     companion object {
 
-        private val list = mutableListOf<Sokuji>()
-
-        fun find(guildId: Long, channelId: Long): Sokuji? {
-            return list.find { it.guildId == guildId && it.channelId == channelId }
+        suspend fun find(guildId: Long, channelId: Long) : Sokuji? {
+            return collection.find(Filters.and(Filters.eq("guildId", guildId), Filters.eq("channelId", channelId))).first()
         }
 
-        fun filter(guildId: Long): List<Sokuji> {
-            return list.filter { it.guildId == guildId }
-        }
-
-        fun add(sokuji: Sokuji): Sokuji {
-            list.add(sokuji)
+        suspend fun add(sokuji: Sokuji) : Sokuji{
+                collection.replaceOne(
+                    Filters.and(Filters.eq("guildId", sokuji.guildId), Filters.eq("channelId", sokuji.channelId)),
+                    sokuji,
+                    ReplaceOptions().upsert(true)
+                )
             return sokuji
         }
 
-        fun remove(sokuji: Sokuji?): Boolean {
-            return list.remove(sokuji)
+        suspend fun remove(guildId: Long, channelId: Long): Boolean {
+            return collection.deleteOne(Filters.and(Filters.eq("guildId", guildId), Filters.eq("channelId", channelId))).wasAcknowledged()
         }
 
-        fun removeAll(sokuji: List<Sokuji>): Boolean {
-            return list.removeAll(sokuji)
+        suspend fun removeAll(guildId: Long) {
+            collection.deleteMany(Filters.and(Filters.eq("guildId", guildId)))
         }
     }
 
