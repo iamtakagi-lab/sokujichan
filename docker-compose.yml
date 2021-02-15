@@ -1,12 +1,18 @@
 version: '3.8'
 
 services:
+
+  # Bot
   sokujichan:
     container_name: sokujichan
     image: iamtakagi/sokujichan:latest
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - mongo
+    env_file:
+      - ./.env
     environment:
       # Bot Token (必須)
       BOT_TOKEN: xxx
@@ -19,6 +25,26 @@ services:
       # HOSTNAME (外部公開しない場合: null で可)
       HOSTNAME:
       # Logger
-      LOG: INFO
+      LOG: DEBUG
       # Embed color
       EMBED_COLOR: 83,221,172
+      # Mongo DB (基本的には書き換えない)
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_USER: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_PASS: ${MONGO_INITDB_ROOT_PASSWORD}
+
+  # DB
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - ./mongodb:/data/db
+    env_file:
+      - ./.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - 27017:27017
