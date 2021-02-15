@@ -49,6 +49,8 @@ cd sokujichan
 `:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
 `:<tag>` GitHub 上のリリースに対応します。
 
+`BOT_TOKEN` にBotのTokenを入力します。
+
 `docker-compose.yml`
 ```yml
 version: '3.8'
