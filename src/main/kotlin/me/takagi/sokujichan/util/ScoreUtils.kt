@@ -1,12 +1,5 @@
 package me.takagi.sokujichan.util
 
-import sun.reflect.generics.tree.Tree
-import java.util.*
-import javax.annotation.Nonnull
-import javax.annotation.Nullable
-import kotlin.collections.HashMap
-import kotlin.collections.LinkedHashMap
-
 object ScoreUtils {
 
     val SCORE_MAP = mapOf(
@@ -27,7 +20,7 @@ object ScoreUtils {
     /**
      * @return 順位を点数に変換して返します
      */
-    fun getScore(data: Array<Int>): Int {
+    fun getScore(data: List<Int>): Int {
         var score = 0
         data.forEach {
             score += SCORE_MAP[it]!!
