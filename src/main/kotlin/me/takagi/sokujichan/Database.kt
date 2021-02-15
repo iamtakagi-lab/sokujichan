@@ -2,7 +2,6 @@ package me.takagi.sokujichan
 
 import me.takagi.sokujichan.common.Env
 import me.takagi.sokujichan.model.Sokuji
-import org.bson.Document
 import org.litote.kmongo.coroutine.CoroutineClient
 import org.litote.kmongo.coroutine.CoroutineCollection
 import org.litote.kmongo.coroutine.CoroutineDatabase
