@@ -11,6 +11,11 @@ object Env {
     val BASE_URI by string { "/" }
     val LOG by string { "INFO" }
     val EMBED_COLOR by color { Color(83, 221, 172) }
+
+    val MONGO_HOST by string { "mongo" }
+    val MONGO_PORT by int { 27017 }
+    val MONGO_USER by stringOrNull
+    val MONGO_PASS by stringOrNull
 }
 
 private val stringOrNull: ReadOnlyProperty<Env, String?>
