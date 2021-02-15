@@ -62,7 +62,7 @@ services:
       HOST: 0.0.0.0
       # Server Port  (必要次第で書き換えてください)
       PORT: 8080
-      # HOSTNAME (外部公開しない場合: null で可)
+      # HOSTNAME (外部公開しない場合: 未入力(null)にしてください。絶対に何も書き込まないでください。)
       HOSTNAME:
       # Logger
       LOG: INFO
@@ -81,14 +81,6 @@ docker-compose up -d
 docker-compose down
 ```
 
-### 配信ソフト (OBSでの設定例)
-`ソース -> ブラウザ -> URLを貼り付け`\
-※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
-
-![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
-
-インストールはこれで終了です。
-
 ## 直接実行 (非推奨)
 
 リリースから Jar を取ってきて実行するか `./gradlew run` で実行できます。
@@ -96,8 +88,18 @@ docker-compose down
 設定値の変更は 環境変数経由でしか行なえません。ご了承ください。
 
 ```console
-LOG=DEBUG java -jar /path/to/sokujichan.jar
+LOG=INFO java -jar /path/to/sokujichan.jar
 ```
+
+***
+
+インストールはこれで終了です。
+
+## 配信ソフト (OBSでの設定例)
+`ソース -> ブラウザ -> URLを貼り付け`\
+※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
+
+![](https://i.gyazo.com/d01c8e6b26ff5e7f37bdd3fc4f85daa7.png)
 
 ## 外部公開する場合
 ポート開放は各自で行ってください。\
