@@ -33,6 +33,7 @@ class SetRaceSizeCommand: Command() {
                     }
 
                     sokuji.raceSize = args[0].toInt()
+                    sokuji.save()
 
                     sokuji.sendMessage("レース数を設定しました: ${sokuji.raceSize}")
 

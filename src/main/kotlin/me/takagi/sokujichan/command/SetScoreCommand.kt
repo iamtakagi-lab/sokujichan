@@ -40,6 +40,8 @@ class SetScoreCommand: Command() {
                     sokuji.addedScoreB = args[1].toInt()
                     sokuji.afterRace = args[2].toInt()
 
+                    sokuji.save()
+
                     sokuji.sendMessage(sokuji.getTotalScore())
 
                 } else {

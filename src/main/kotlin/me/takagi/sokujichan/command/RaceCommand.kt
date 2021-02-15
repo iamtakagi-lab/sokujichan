@@ -3,12 +3,9 @@ package me.takagi.sokujichan.command
 import com.jagrosh.jdautilities.command.Command
 import com.jagrosh.jdautilities.command.CommandEvent
 import kotlinx.coroutines.runBlocking
-import me.takagi.sokujichan.model.Race
 import me.takagi.sokujichan.model.Sokuji
-import me.takagi.sokujichan.model.Spots
 import org.apache.commons.lang3.StringUtils
 import org.apache.commons.lang3.math.NumberUtils
-import org.litote.kmongo.MongoOperator
 
 class RaceCommand : Command() {
 
@@ -47,7 +44,8 @@ class RaceCommand : Command() {
 
                     dataB.removeAll(dataA)
 
-                    sokuji.races.add(Race(Spots(dataA), Spots(dataB)))
+                    sokuji.races.add(Sokuji.Race(Sokuji.Spots(dataA), Sokuji.Spots(dataB)))
+                    sokuji.save()
 
                     sokuji.send()
 

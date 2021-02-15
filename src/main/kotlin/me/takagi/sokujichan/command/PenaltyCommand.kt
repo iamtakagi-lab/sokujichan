@@ -47,6 +47,7 @@ class PenaltyCommand  : Command() {
                         }
                     }
 
+                    sokuji.save()
                     sokuji.sendMessage(sokuji.getTotalScore())
 
                 } else {
