@@ -6,8 +6,6 @@ object Versions {
 
     const val KMongoCoroutine = "4.2.4"
 
-    const val JsonKt = "6.0.2"
-
     const val JDA = "4.2.0_168"
     const val JDAUtilities = "3.0.5"
 
@@ -55,7 +53,6 @@ dependencies {
     implementation("org.fusesource.jansi:jansi:${Versions.jansi}")
 
     // Util
-    implementation("blue.starry:jsonkt:${Versions.JsonKt}")
     implementation("org.apache.commons:commons-lang3:${Versions.CommonsLang}")
 
     // Logging
