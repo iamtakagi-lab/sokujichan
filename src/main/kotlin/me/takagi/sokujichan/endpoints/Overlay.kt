@@ -11,6 +11,7 @@ import kotlinx.css.*
 import kotlinx.html.*
 import me.takagi.sokujichan.OverlayTemplate
 import me.takagi.sokujichan.common.createLogger
+import me.takagi.sokujichan.model.Sokuji
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.createLogger("sokujichan.endpoints")
