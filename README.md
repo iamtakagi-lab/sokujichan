@@ -24,6 +24,13 @@ No provided a public bot.
 
 ![](https://i.gyazo.com/4578c6b17349bbfffcff9086506fa15b.png)
 
+## 動作環境
+Linux/macOS/Windows
+
+## インストールに必要なもの
+- [Git](https://git-scm.com/downloads)
+- [Docker](https://www.docker.com/get-started)
+
 ## インストール / Installation
 
 - [Discord Developer Portal](https://discord.com/developers/applications) にてBotを作成します。
@@ -35,7 +42,9 @@ git clone https://github.com/iam-takagi/sokujichan.git
 cd sokujichan
 ```
 
-### Dockerでの導入 (推奨)
+### Dockerでの導入 (推奨): こちらのほうが環境構築が容易です
+
+
 
 このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
