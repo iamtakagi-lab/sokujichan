@@ -67,7 +67,7 @@ services:
     depends_on:
       - mongo
     environment:
-      # Bot Token (必須)
+      # Bot Token (ここだけ書き換えれば動く)
       BOT_TOKEN: xxx
       # Base Uri
       BASE_URI: /
