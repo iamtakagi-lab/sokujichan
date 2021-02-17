@@ -11,6 +11,7 @@ class RaceCommand : Command() {
 
     init {
         this.name = "race"
+        this.aliases = arrayOf("r")
         this.help = "順位を入力して得点を適用します"
         this.arguments = "<spot1> <spot2> <spot3>...<spot6>"
     }
