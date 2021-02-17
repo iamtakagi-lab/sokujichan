@@ -45,9 +45,9 @@ cd sokujichan
 ### Dockerでの導入 (推奨): こちらのほうが環境構築が容易です
 
 このようなタグがあります\
-`:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
-`:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
-`:<tag>` GitHub 上のリリースに対応します。
+`iamtakagi/sokujichan:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
+`iamtakagi/sokujichan:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
+`iamtakagi/sokujichan:<tag>` GitHub 上のリリースに対応します。
 
 `BOT_TOKEN` にBotのTokenを入力します。
 
