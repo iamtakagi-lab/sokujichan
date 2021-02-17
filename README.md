@@ -18,7 +18,7 @@ No provided a public bot. Please install yourself.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
-![](https://i.gyazo.com/e2b6f639ddd5adcde9e856d6148f04da.png)
+![](https://i.gyazo.com/72579869774e02a21108e7326d2acb98.png)
 
 `_sokujichan for help`   
 
