@@ -13,8 +13,8 @@
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。\
 MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
-Botの一般提供は行っていません。\
-No provided a public bot.
+Botの一般提供は行っていません。各自でインストールを行ってください。\
+No provided a public bot. Please install yourself.
 
 ![](https://i.gyazo.com/3a394b3260d101fd58c29cc528dc93a3.jpg)
 
@@ -23,6 +23,13 @@ No provided a public bot.
 `_sokujichan for help`   
 
 ![](https://i.gyazo.com/4578c6b17349bbfffcff9086506fa15b.png)
+
+## 動作環境
+Linux/macOS/Windows
+
+## インストールに必要なもの
+- [Git](https://git-scm.com/downloads)
+- [Docker](https://www.docker.com/get-started)
 
 ## インストール / Installation
 
@@ -35,7 +42,7 @@ git clone https://github.com/iam-takagi/sokujichan.git
 cd sokujichan
 ```
 
-### Dockerでの導入 (推奨)
+### Dockerでの導入 (推奨): こちらのほうが環境構築が容易です
 
 このようなタグがあります\
 `:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
@@ -47,14 +54,18 @@ cd sokujichan
 version: '3.8'
 
 services:
+
+  # Bot
   sokujichan:
     container_name: sokujichan
     image: iamtakagi/sokujichan:latest
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - mongo
     environment:
-      # Bot Token (必須)
+      # Bot Token (ここだけ書き換えれば動く: 入力必須)
       BOT_TOKEN: xxx
       # Base Uri
       BASE_URI: /
@@ -62,12 +73,29 @@ services:
       HOST: 0.0.0.0
       # Server Port  (必要次第で書き換えてください)
       PORT: 8080
-      # HOSTNAME (外部公開しない場合: 未入力(null)にしてください。絶対に何も書き込まないでください。)
+      # HOSTNAME (外部公開しない場合: null で可)
       HOSTNAME:
       # Logger
-      LOG: INFO
+      LOG: DEBUG
       # Embed color
       EMBED_COLOR: 83,221,172
+      # Mongo DB (基本的には書き換えない)
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_USER: user
+      MONGO_PASS: pass
+  # DB
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - ./mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - 27017:27017
 ```
 
 ```console
@@ -79,6 +107,9 @@ docker-compose up -d
 
 # 停止 / Shutdown
 docker-compose down
+
+# ログ確認 / Logs
+docker-compose logs -f
 ```
 
 ## 直接実行 (非推奨)
@@ -112,3 +143,11 @@ PORT: 8080
 # HOSTNAME (外部公開しない場合: null で可)
 HOSTNAME: ドメイン名 (xxx.jp 等)
 ```
+
+## 貢献 / Contribution
+
+### Issues
+バグの報告・改善点・提案等を行ってください。
+
+### Pull Requests
+開発には Intellij IDEA を推奨しています。
