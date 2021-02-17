@@ -2,7 +2,6 @@ package me.takagi.sokujichan.model
 
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.ReplaceOptions
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import me.takagi.sokujichan.bot.Bot
 import me.takagi.sokujichan.collection
@@ -11,7 +10,6 @@ import me.takagi.sokujichan.util.ScoreUtils
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.entities.TextChannel
-import org.bson.conversions.Bson
 import org.litote.kmongo.eq
 import java.util.*
 
@@ -134,22 +132,13 @@ class Sokuji(
     fun send() {
         val race = races.get(races.size - 1)
         sendMessage(
-            getRaceScore(race),
-            getTotalScore(),
-            getRaceScores(),
-            getRaceInfo(race)
-        )
-    }
-
-    fun getRaceInfo(race: Race): String {
-        race.apply {
-            val a = spotsA.getScore()
-            val b = spotsB.getScore()
-            return "```$a-$b (${getDifSign(a - b)}) / 合計: ${teamA} ${getScoreA()}-${getScoreB()} ${teamB} / 点差: ${getDifSign(
-                getScoreA().minus(getScoreB())
-            )} / @${getRacesLeft()} " +
-                    "${if (isWinDetermine()) "勝利確定" else ""}  ${if (isLoseDetermine()) "敗北確定" else ""}```"
-        }
+            buildEmbed("$teamA vs $teamB", fields =
+            mapOf("レース" to getRaceScore(race),
+                  "合計" to getTotalScore(),
+                  "履歴" to getRaceScores(),
+                  "状況" to getRaceContext(race)
+            )
+        ))
     }
 
     fun getRacesLeft(): Int {
@@ -193,6 +182,29 @@ class Sokuji(
             return true
         }
         return false
+    }
+
+    fun buildEmbed(title: String? = null, author: String? = null, text: String? = null, fields: Map<String, String>) : MessageEmbed {
+        return EmbedBuilder().apply {
+            setColor(Env.EMBED_COLOR)
+            setTitle(title)
+            setAuthor(author)
+            setDescription(text)
+            fields.forEach { addField(it.key, it.value, false) }
+            setTimestamp(Date().toInstant())
+            setFooter("sokujichan")
+        }.build()
+    }
+
+    fun getRaceContext(race: Race): String {
+        race.apply {
+            val a = spotsA.getScore()
+            val b = spotsB.getScore()
+            return "```$a-$b (${getDifSign(a - b)}) / 合計: ${teamA} ${getScoreA()}-${getScoreB()} ${teamB} / 点差: ${getDifSign(
+                    getScoreA().minus(getScoreB())
+                )} / @${getRacesLeft()} " +
+                        "${if (isWinDetermine()) "勝利確定" else ""}  ${if (isLoseDetermine()) "敗北確定" else ""}```"
+        }
     }
 
     /**
@@ -254,6 +266,7 @@ class Sokuji(
             }
             append("```")
         }
+
     }
 
     /**
