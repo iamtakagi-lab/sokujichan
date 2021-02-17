@@ -69,34 +69,6 @@ class Sokuji(
         }
     }
 
-    companion object {
-
-        suspend fun getListByGuild(guildId: Long) : List<Sokuji> {
-            return collection.find(Sokuji::guildId eq guildId).toList()
-        }
-
-        suspend fun find(guildId: Long, channelId: Long) : Sokuji? {
-            return collection.findOne(Sokuji::guildId eq guildId, Sokuji::channelId eq channelId)
-        }
-
-        suspend fun save(sokuji: Sokuji) : Sokuji{
-                collection.replaceOne(
-                    Filters.and(Filters.eq("guildId", sokuji.guildId), Filters.eq("channelId", sokuji.channelId)),
-                    sokuji,
-                    ReplaceOptions().upsert(true)
-                )
-            return sokuji
-        }
-
-        suspend fun remove(guildId: Long, channelId: Long): Boolean {
-            return collection.deleteOne(Filters.and(Filters.eq("guildId", guildId), Filters.eq("channelId", channelId))).wasAcknowledged()
-        }
-
-        suspend fun removeAll(guildId: Long) {
-            collection.deleteMany(Sokuji::guildId eq guildId)
-        }
-    }
-
     suspend fun save() {
         save(this)
     }
@@ -230,14 +202,14 @@ class Sokuji(
         race.apply {
             val a = spotsA.getScore()
             val b = spotsB.getScore()
-            return StringBuilder().apply {
+            return buildString {
                 append("```\n")
                 append("レース順位: " + spotsA.format())
                 append("\n\n")
                 append("$teamA $a - $b $teamB\n")
                 append("点差: ${getDifSign(a.minus(b))}\n")
                 append("```").toString()
-            }.toString()
+            }
         }
     }
 
@@ -249,7 +221,7 @@ class Sokuji(
         val a = getScoreA()
         val b = getScoreB()
 
-        return StringBuilder().apply {
+        return buildString {
             append("```\n")
             append("${if (afterRace == 0) races.size else afterRace} / $raceSize レース終了\n")
             append("$teamA: ${a}\n")
@@ -263,27 +235,25 @@ class Sokuji(
             }
 
             append("```").toString()
-        }.toString()
+        }
     }
 
     /**
      * @return スコア履歴
      */
     fun getRaceScores(): String {
-        val s = StringBuilder()
-        s.append("```\n")
+        return buildString {
+            append("```\n")
 
-        for (i in races.indices) {
-            races[i].apply {
-                val a = spotsA.getScore()
-                val b = spotsB.getScore()
-                s.append("${i + 1} | $a - $b (${getDifSign(a.minus(b))})\n")
+            for (i in races.indices) {
+                races[i].apply {
+                    val a = spotsA.getScore()
+                    val b = spotsB.getScore()
+                    append("${i + 1} | $a - $b (${getDifSign(a.minus(b))})\n")
+                }
             }
+            append("```")
         }
-
-        s.append("```")
-
-        return s.toString()
     }
 
     /**
@@ -324,4 +294,31 @@ class Sokuji(
         return false
     }
 
+    companion object {
+
+        suspend fun getListByGuild(guildId: Long) : List<Sokuji> {
+            return collection.find(Sokuji::guildId eq guildId).toList()
+        }
+
+        suspend fun find(guildId: Long, channelId: Long) : Sokuji? {
+            return collection.findOne(Sokuji::guildId eq guildId, Sokuji::channelId eq channelId)
+        }
+
+        suspend fun save(sokuji: Sokuji) : Sokuji{
+            collection.replaceOne(
+                Filters.and(Filters.eq("guildId", sokuji.guildId), Filters.eq("channelId", sokuji.channelId)),
+                sokuji,
+                ReplaceOptions().upsert(true)
+            )
+            return sokuji
+        }
+
+        suspend fun remove(guildId: Long, channelId: Long): Boolean {
+            return collection.deleteOne(Filters.and(Filters.eq("guildId", guildId), Filters.eq("channelId", channelId))).wasAcknowledged()
+        }
+
+        suspend fun removeAll(guildId: Long) {
+            collection.deleteMany(Sokuji::guildId eq guildId)
+        }
+    }
 }
