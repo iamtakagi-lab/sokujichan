@@ -9,7 +9,7 @@
 [![issues](https://img.shields.io/github/issues/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/pulls)
 
-# これはなに / What is this?
+## これはなに / What is this?
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。\
 MarioKart 8DX 6v6 the score overlay for broadcast with discord bot.
 
@@ -24,14 +24,14 @@ No provided a public bot. Please install yourself.
 
 ![](https://i.gyazo.com/4578c6b17349bbfffcff9086506fa15b.png)
 
-# 動作環境
+## 動作環境
 Linux/macOS/Windows
 
 # インストールに必要なもの
 - [Git](https://git-scm.com/downloads)
 - [Docker](https://www.docker.com/get-started)
 
-# インストール / Installation
+## インストール / Installation
 
 - [Discord Developer Portal](https://discord.com/developers/applications) にてBotを作成します。
   - Privileged Gateway Intents を ON の状態にします。
@@ -128,7 +128,7 @@ LOG=DEBUG java -jar /path/to/sokujichan.jar
 
 インストールはこれで終了です。
 
-# 配信ソフト (OBSでの設定例)
+## 配信ソフト (OBSでの設定例)
 `ソース -> ブラウザ -> URLを貼り付け`\
 ※ 途中でオーバーレイが消えてしまう場合は `オーバーレイを右クリック -> 対話` を表示したままにしてください
 
@@ -146,10 +146,10 @@ PORT: 8080
 HOSTNAME: ホスト名, ドメイン, IPアドレス等
 ```
 
-# 貢献 / Contribution
+## 貢献 / Contribution
 
-## Issues
+### Issues
 バグの報告・改善点・提案等を行ってください。
 
-## Pull Requests
-開発には Intellij IDEA を推奨しています。
+### Pull Requests
+開発には Intellij IDEA を使用しています。
