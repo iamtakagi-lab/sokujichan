@@ -28,7 +28,6 @@ No provided a public bot. Please install yourself.
 Linux/macOS/Windows
 
 # インストールに必要なもの
-- [Git](https://git-scm.com/downloads)
 - [Docker](https://www.docker.com/get-started)
 
 ## インストール / Installation
@@ -36,13 +35,7 @@ Linux/macOS/Windows
 - [Discord Developer Portal](https://discord.com/developers/applications) にてBotを作成します。
   - Privileged Gateway Intents を ON の状態にします。
 
-- Cloneします
-```console
-git clone https://github.com/iam-takagi/sokujichan.git
-cd sokujichan
-```
-
-## Dockerでの導入 (推奨): こちらのほうが環境構築が容易です
+## Dockerでの導入 (推奨)
 
 このようなタグがあります\
 `iamtakagi/sokujichan:latest` master ブランチへのプッシュの際にビルドされます。安定しています。\
