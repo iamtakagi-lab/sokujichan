@@ -139,6 +139,61 @@ PORT: 8080
 HOSTNAME: ホスト名, ドメイン, IPアドレス等
 ```
 
+## 開発を行う場合 / Development mode
+```console
+git clone https://github.com/GITHUB_USERNAME/sokujichan
+touch docker-compose.dev.yml
+```
+
+`docker-compose.dev.yml`
+
+```yml
+version: '3.8'
+
+services:
+
+  # Bot
+  sokujichan:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+    environment:
+      # Bot Token (ここだけ書き換えれば動く: 入力必須)
+      BOT_TOKEN: xxx
+      # Base Uri
+      BASE_URI: /
+      # Server Host
+      HOST: 0.0.0.0
+      # Server Port  (必要次第で書き換えてください)
+      PORT: 8080
+      # HOSTNAME (外部公開しない場合: null で可)
+      HOSTNAME:
+      # Logger
+      LOG: DEBUG
+      # Embed color
+      EMBED_COLOR: 83,221,172
+      # Mongo DB (基本的には書き換えない)
+      MONGO_HOST: mongo
+      MONGO_PORT: 27017
+      MONGO_USER: user
+      MONGO_PASS: pass
+  # DB
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - ./mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - 27017:27017
+```
+
 ## 貢献 / Contribution
 
 ### Issues
