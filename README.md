@@ -42,6 +42,10 @@ Linux/macOS/Windows
 `iamtakagi/sokujichan:dev` dev ブランチへのプッシュの際にビルドされます。開発版のため, 不安定である可能性があります。\
 `iamtakagi/sokujichan:<tag>` GitHub 上のリリースに対応します。
 
+```console
+touch docker-compose.yml
+```
+
 `BOT_TOKEN` にBotのTokenを入力します。
 
 `docker-compose.yml`
@@ -141,7 +145,7 @@ HOSTNAME: ホスト名, ドメイン, IPアドレス等
 
 ## 開発を行う場合 / Development mode
 ```console
-git clone https://github.com/GITHUB_USERNAME/sokujichan
+git clone https://github.com/USERNAME/sokujichan
 touch docker-compose.dev.yml
 ```
 
