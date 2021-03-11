@@ -6,7 +6,9 @@ on:
       - opened
       - synchronize
     paths-ignore:
-      - '*.md'
+      - .gitignore
+      - LICENSE
+      - '**.md'
 
   workflow_dispatch:
 
