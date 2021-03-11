@@ -2,7 +2,8 @@
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.4.21-blue)](https://kotlinlang.org)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/releases)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/iam-takagi/sokujichan/Docker)](https://hub.docker.com/r/iamtakagi/sokujichan)
+[![CI](https://github.com/iamtakagi/sokujichan/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/sokujichan/actions/workflows/ci.yml)
+[![Deploy](https://github.com/iamtakagi/sokujichan/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/sokujichan/actions/workflows/deploy.yml)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/iamtakagi/sokujichan)](https://hub.docker.com/r/iamtakagi/sokujichan)
 [![Docker Pulls](https://img.shields.io/docker/pulls/iamtakagi/sokujichan)](https://hub.docker.com/r/iamtakagi/sokujichan)
 [![license](https://img.shields.io/github/license/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/blob/master/LICENSE)
