@@ -1,11 +1,22 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - master
+      - dev
+    paths-ignore:
+      - .gitignore
+      - LICENSE
+      - '**.md'
   pull_request:
-    types:
+     branches:
+      - master
+      - dev
+     types:
       - opened
       - synchronize
-    paths-ignore:
+     paths-ignore:
       - .gitignore
       - LICENSE
       - '**.md'
