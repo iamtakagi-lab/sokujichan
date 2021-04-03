@@ -1,14 +1,14 @@
 # 💬 sokujichan: 8dx 6v6 the score overlay for broadcast with discord bot.
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.4.21-blue)](https://kotlinlang.org)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/iamtakagi/sokujichan)](https://github.com/iam-takagi/sokujichan/releases)
 [![CI](https://github.com/iamtakagi/sokujichan/actions/workflows/ci.yml/badge.svg)](https://github.com/iamtakagi/sokujichan/actions/workflows/ci.yml)
 [![Deploy](https://github.com/iamtakagi/sokujichan/actions/workflows/deploy.yml/badge.svg)](https://github.com/iamtakagi/sokujichan/actions/workflows/deploy.yml)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/iamtakagi/sokujichan)](https://hub.docker.com/r/iamtakagi/sokujichan)
 [![Docker Pulls](https://img.shields.io/docker/pulls/iamtakagi/sokujichan)](https://hub.docker.com/r/iamtakagi/sokujichan)
-[![license](https://img.shields.io/github/license/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/blob/master/LICENSE)
-[![issues](https://img.shields.io/github/issues/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/issues)
-[![pull requests](https://img.shields.io/github/issues-pr/iam-takagi/sokujichan)](https://github.com/iam-takagi/sokujichan/pulls)
+[![license](https://img.shields.io/github/license/iamtakagi/sokujichan)](https://github.com/iam-takagi/sokujichan/blob/master/LICENSE)
+[![issues](https://img.shields.io/github/issues/iamtakagi/sokujichan)](https://github.com/iamtakagi/sokujichan/issues)
+[![pull requests](https://img.shields.io/github/issues-pr/iamtakagi/sokujichan)](https://github.com/iamtakagi/sokujichan/pulls)
 
 ## これはなに / What is this?
 マリオカート8DX 6v6 のスコアオーバーレイを配信ソフト上で表示するDiscord Botです。\
